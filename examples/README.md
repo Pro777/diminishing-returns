@@ -3,16 +3,16 @@
 These transcripts are **clean-room**: created only to demonstrate DR behavior.
 
 ## 1) When to stop a meeting
-- Transcript: `transcript.meeting-stop.json`
-- Walkthrough: `meeting-stop.md`
+- Transcript: [`transcript.meeting-stop.json`](./transcript.meeting-stop.json)
+- Walkthrough: [`meeting-stop.md`](./meeting-stop.md)
 
 Why it’s useful:
 - universally understood
 - maps directly to “stop/ship” behavior (decision + owner + next action)
 
 ## 2) Ship of Theseus
-- Transcript: `transcript.ship-of-theseus.json`
-- Walkthrough: `ship-of-theseus.md`
+- Transcript: [`transcript.ship-of-theseus.json`](./transcript.ship-of-theseus.json)
+- Walkthrough: [`ship-of-theseus.md`](./ship-of-theseus.md)
 
 Why it’s useful:
 - engineer-adjacent
