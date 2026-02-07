@@ -4,7 +4,7 @@
 
 ```mermaid
 flowchart TD
-  A[Two ideas enter] --> B{{DR PIT<br/>(Thunderdome mode)}}
+  A[Two ideas enter] --> B[DR PIT (Thunderdome mode)]
   B --> C[One decision leaves]
 ```
 
