@@ -1,5 +1,7 @@
 # Diminishing Returns
 
+**Two ideas enter. One decision leaves.**
+
 A small utility for measuring **diminishing returns** in multi-agent / multi-LLM conversations.
 
 This is **not “confidence.”** It’s a stop/ship signal: *are we still producing novel, decision-relevant information?*
