@@ -59,7 +59,11 @@ python -m pip install diminishing-returns
 
 # score a transcript
 # (see spec/transcript.v0.1.schema.json)
+# JSON transcript
 dr score transcript.json
+
+# JSONL trace
+dr score trace.jsonl
 ```
 
 ## 🧾 Output

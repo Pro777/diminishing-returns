@@ -33,11 +33,13 @@ Each example also has checked-in computed artifacts:
 - ✅ `*.expected.json` — the JSON emitted by `dr score`
 - 🧵 `trace.*.jsonl` — the same transcript as an event stream (machine-friendly)
 
-Run:
+Run (either format):
 
 ```bash
-# after installing the package
-# (or run via PYTHONPATH=src for local dev)
+# JSON transcript
 dr score examples/transcript.meeting-stop.json
+
+# JSONL trace (event stream)
+dr score examples/trace.meeting-stop.jsonl
 ```
 

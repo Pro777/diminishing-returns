@@ -1,7 +1,7 @@
 import argparse
 import json
-from pathlib import Path
 
+from .io import load_transcript
 from .score import score_transcript
 
 
@@ -15,7 +15,7 @@ def main() -> None:
     args = p.parse_args()
 
     if args.cmd == "score":
-        data = json.loads(Path(args.path).read_text(encoding="utf-8"))
+        data = load_transcript(args.path)
         result = score_transcript(data)
         print(json.dumps(result, indent=2, sort_keys=True))
         return
