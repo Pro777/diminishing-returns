@@ -1,4 +1,4 @@
-# Example: Ship of Theseus
+# ⛵️ Example: Ship of Theseus
 
 This clean-room transcript is engineer-adjacent: it’s really about **identity under change**.
 

@@ -30,7 +30,7 @@ This is **not “confidence.”** It’s a stop/ship signal: *are we still produ
 
 ---
 
-## What it measures (v0.1)
+## 📏 What it measures (v0.1)
 
 A weighted score from observable transcript signals:
 
@@ -41,7 +41,7 @@ A weighted score from observable transcript signals:
 
 > Design note: a conversation can converge on the wrong answer. DR measures *diminishing returns*, not truth.
 
-## Why
+## 🧭 Why
 
 Teams waste cycles in “one more round” loops.
 
@@ -51,7 +51,7 @@ A diminishing-returns meter nudges you toward the next correct move:
 - ✅ **assign the next action**
 - ✅ **run verification** (tests, reproduce steps, check evidence)
 
-## Quick start
+## 🚀 Quick start
 
 ```bash
 # install
@@ -62,7 +62,7 @@ python -m pip install diminishing-returns
 dr score transcript.json
 ```
 
-## Output
+## 🧾 Output
 
 ```json
 {
@@ -83,14 +83,14 @@ dr score transcript.json
 }
 ```
 
-## Examples
+## 🧪 Examples
 
 - `examples/transcript.meeting-stop.json` — **When to stop a meeting** (universal metaphor)
 - `examples/transcript.ship-of-theseus.json` — **Ship of Theseus** (artifact identity / provenance)
 
 Each example includes a `diminishing_returns_note.recommended_stop_round` to make expected behavior explicit.
 
-## References (receipts)
+## 📎 References (receipts)
 
 If you want the nerdy provenance: see
 - `docs/rubric.md` — what DR measures (and why)

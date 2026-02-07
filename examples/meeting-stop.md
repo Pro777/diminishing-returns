@@ -1,4 +1,4 @@
-# Example: When to stop a meeting
+# 🧑‍💼 Example: When to stop a meeting
 
 This example is a clean-room transcript meant to be instantly legible to product and business folks.
 
