@@ -11,7 +11,8 @@ Why it’s useful:
 - maps directly to “stop/ship” behavior (decision + owner + next action)
 
 ## 2) Ship of Theseus
-File: `transcript.ship-of-theseus.json`
+- Transcript: `transcript.ship-of-theseus.json`
+- Walkthrough: `ship-of-theseus.md`
 
 Why it’s useful:
 - engineer-adjacent
