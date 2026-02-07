@@ -2,6 +2,17 @@
 
 **Two ideas enter. One decision leaves.**
 
+```text
+   TWO IDEAS ENTER
+        │
+        ▼
+    ┌─────────┐
+    │  DR PIT  │   (Thunderdome mode)
+    └────┬────┘
+         ▼
+   ONE DECISION LEAVES
+```
+
 A small utility for measuring **diminishing returns** in multi-agent / multi-LLM conversations.
 
 This is **not “confidence.”** It’s a stop/ship signal: *are we still producing novel, decision-relevant information?*
