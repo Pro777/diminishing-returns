@@ -58,7 +58,7 @@ A diminishing-returns meter nudges you toward the next correct move:
 python -m pip install diminishing-returns
 
 # score a transcript
-# (see spec/transcript.v0.1.schema.json)
+# (see [`spec/transcript.v0.1.schema.json`](./spec/transcript.v0.1.schema.json))
 # JSON transcript
 dr score transcript.json
 
@@ -89,9 +89,9 @@ dr score trace.jsonl
 
 ## 🧪 Examples
 
-- `examples/transcript.meeting-stop.json` — **When to stop a meeting** (universal metaphor)
-- `examples/transcript.ship-of-theseus.json` — **Ship of Theseus** (artifact identity / provenance)
-- `examples/transcript.chinese-room.json` — **Chinese Room** (define your criterion)
+- [`examples/transcript.meeting-stop.json`](./examples/transcript.meeting-stop.json) — **When to stop a meeting** (universal metaphor)
+- [`examples/transcript.ship-of-theseus.json`](./examples/transcript.ship-of-theseus.json) — **Ship of Theseus** (artifact identity / provenance)
+- [`examples/transcript.chinese-room.json`](./examples/transcript.chinese-room.json) — **Chinese Room** (define your criterion)
 
 Each example includes a `diminishing_returns_note.recommended_stop_round` to make expected behavior explicit.
 

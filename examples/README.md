@@ -30,8 +30,8 @@ Each transcript includes:
 - `diminishing_returns_note.recommended_stop_round`
 
 Each example also has checked-in computed artifacts:
-- ✅ `*.expected.json` — the JSON emitted by `dr score`
-- 🧵 `trace.*.jsonl` — the same transcript as an event stream (machine-friendly)
+- ✅ [`*.expected.json`](./transcript.meeting-stop.expected.json) — the JSON emitted by `dr score`
+- 🧵 [`trace.*.jsonl`](./trace.meeting-stop.jsonl) — the same transcript as an event stream (machine-friendly)
 
 Run (either format):
 
