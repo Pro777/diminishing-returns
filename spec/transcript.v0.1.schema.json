@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://proofofship.com/schemas/dr/transcript.v0.1.schema.json",
+  "title": "Diminishing Returns transcript v0.1",
+  "type": "object",
+  "required": ["version", "conversation_id", "rounds"],
+  "properties": {
+    "version": {"const": "0.1"},
+    "conversation_id": {"type": "string"},
+    "topic": {"type": "string"},
+    "rounds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["round", "outputs"],
+        "properties": {
+          "round": {"type": "integer", "minimum": 1},
+          "inputs": {
+            "type": "object",
+            "description": "Optional: prompt/object pointers used to produce this round"
+          },
+          "outputs": {
+            "type": "object",
+            "required": ["claims"],
+            "properties": {
+              "claims": {"type": "array", "items": {"type": "string"}},
+              "decisions": {"type": "array", "items": {"type": "string"}},
+              "open_questions": {"type": "array", "items": {"type": "string"}},
+              "next_actions": {"type": "array", "items": {"type": "string"}},
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["url"],
+                  "properties": {
+                    "url": {"type": "string"},
+                    "note": {"type": "string"}
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "summary": {"type": "string"}
+            },
+            "additionalProperties": true
+          },
+          "telemetry": {
+            "type": "object",
+            "description": "Optional runtime metrics (token estimates, latency, model IDs, etc.)",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

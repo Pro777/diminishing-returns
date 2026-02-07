@@ -1,0 +1,26 @@
+{
+  "version": "0.1",
+  "conversation_id": "research-2026-02-07-001",
+  "topic": "Stopping criteria for multi-agent research loops",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "A diminishing-returns score should measure novelty exhaustion and semantic stability, not correctness.",
+          "A composite stop rule (low novelty + high stability for k rounds) is more robust than a single metric."
+        ],
+        "open_questions": [
+          "How do we detect false convergence (agreement on the wrong thing)?"
+        ],
+        "next_actions": [
+          "Define transcript and round-output schemas so novelty can be computed as set difference over claims."
+        ],
+        "citations": [
+          {"url": "https://www.sigstore.dev/", "note": "Example of transparency log pattern (analogy)."}
+        ],
+        "summary": "Round 1: define the goal and pick a composite stopping rule; start threat-modeling false convergence."
+      }
+    }
+  ]
+}
