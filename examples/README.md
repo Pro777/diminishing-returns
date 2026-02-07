@@ -2,9 +2,9 @@
 
 These transcripts are **clean-room**: created only to demonstrate DR behavior.
 
-## 1) 🧑‍💼 When to stop a meeting
+## 1) 🧑‍💼 [When to stop a meeting](./meeting-stop.md)
 - Transcript: [`transcript.meeting-stop.json`](./transcript.meeting-stop.json)
-- Walkthrough: [`meeting-stop.md`](./meeting-stop.md)
+- Walkthrough: *(see heading link)*
 
 Why it’s useful:
 - universally understood
