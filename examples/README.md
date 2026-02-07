@@ -18,6 +18,14 @@ Why it’s useful:
 - engineer-adjacent
 - maps neatly to artifact identity/provenance questions
 
+## 3) 🀄️ Chinese Room
+- Transcript: [`transcript.chinese-room.json`](./transcript.chinese-room.json)
+- Walkthrough: [`chinese-room.md`](./chinese-room.md)
+
+Why it’s useful:
+- a classic “define your criterion” debate
+- converges naturally once scope is explicit
+
 ---
 
 Each transcript includes:

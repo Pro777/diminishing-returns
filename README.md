@@ -87,6 +87,7 @@ dr score transcript.json
 
 - `examples/transcript.meeting-stop.json` — **When to stop a meeting** (universal metaphor)
 - `examples/transcript.ship-of-theseus.json` — **Ship of Theseus** (artifact identity / provenance)
+- `examples/transcript.chinese-room.json` — **Chinese Room** (define your criterion)
 
 Each example includes a `diminishing_returns_note.recommended_stop_round` to make expected behavior explicit.
 
