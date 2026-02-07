@@ -36,9 +36,9 @@
       "round": 2,
       "outputs": {
         "claims": [
-          "One family of solutions is part-essentialism (mereological essentialism): an object cannot survive loss/replacement of certain parts (sometimes: any part), implying the ship changes identity during replacement.",
-          "Another family is continuity/constitution views: an artifact can persist through part replacement if there is the right kind of continuity (causal, functional, organizational) tying earlier and later stages.",
-          "Perdurantism (4Dism) dissolves some pressure by treating the ship as a spacetime 'worm' composed of temporal parts; questions of identity become questions about stage-relations and naming conventions."
+          "The Ship of Theseus is a thought experiment about whether an object remains the same object after its parts are replaced over time.",
+          "Part-essentialism (mereological essentialism) implies the ship changes identity during replacement (potentially with each part change).",
+          "Continuity/constitution views allow an artifact to persist through part replacement if there is the right kind of continuity (causal, functional, organizational)."
         ],
         "decisions": [
           "Track at least two live theoretical axes: (1) parts-based identity constraints vs (2) continuity-based persistence conditions.",
@@ -65,9 +65,9 @@
       "round": 3,
       "outputs": {
         "claims": [
+          "Continuity/constitution views allow an artifact to persist through part replacement if there is the right kind of continuity (causal, functional, organizational).",
           "For artifacts, identity judgments often track social/functional roles (what the ship is for, and how it is tracked by a community), not only micro-material composition.",
-          "A plausible practical criterion is 'historical continuity of the artifact': the later ship is the same if it stands in the right causal-historical relation to the earlier one (maintenance, custodianship, intended preservation).",
-          "However, role- and history-based criteria risk making identity partly conventional: different communities (or legal regimes) can legitimately track 'the same ship' differently."
+          "Role- and history-based criteria can be context-sensitive: legal, practical, and metaphysical questions may track 'the same ship' differently."
         ],
         "decisions": [
           "Treat 'artifact identity' as potentially interest-relative: the right criterion can depend on why we care (insurance, heritage, metaphysics).",
@@ -94,9 +94,9 @@
       "round": 4,
       "outputs": {
         "claims": [
-          "Hobbes' variant adds a 'rival claimant': if the discarded original planks are reassembled into a second ship, continuity-based criteria may favor the maintained ship, while parts-based criteria may favor the reassembled ship.",
-          "The variant creates a potential non-uniqueness problem: if both candidates satisfy different intuitive criteria, 'the original ship' may not be a single well-defined target without specifying a criterion.",
-          "A common resolution strategy is to privilege one relation (e.g., continuous functioning/custody) as identity-preserving and treat the other object as a replica or reconstitution, but this is a theoretical choice rather than an obvious fact."
+          "Hobbes' variant adds a rival claimant: if the discarded original planks are reassembled into a second ship, parts-based criteria may favor the reassembled ship while continuity-based criteria may favor the maintained ship.",
+          "Without specifying a criterion, 'the original ship' may not be a single well-defined target in the Hobbes case.",
+          "Continuity/constitution views allow an artifact to persist through part replacement if there is the right kind of continuity (causal, functional, organizational)."
         ],
         "decisions": [
           "Use the Hobbes case as a discriminator test: any proposed criterion should say which ship (if any) is identical to the original and why.",
@@ -123,9 +123,9 @@
       "round": 5,
       "outputs": {
         "claims": [
-          "The Ship of Theseus functions as a general template for identity-over-time problems: any account must explain persistence through change, especially for composites (artifacts, organisms, persons).",
-          "Many practical domains already operationalize identity with conventions (serial numbers, registries, provenance chains); these can be coherent even if metaphysical identity remains disputed.",
-          "A useful synthesis is pluralism: there may be multiple legitimate 'sameness' relations (same matter, same form/structure, same history, same function), and the paradox arises when we demand one relation do all the work."
+          "A useful synthesis is pluralism: there may be multiple legitimate 'sameness' relations (same matter, same form/structure, same history, same function).",
+          "Hobbes' variant adds a rival claimant: if the discarded original planks are reassembled into a second ship, parts-based criteria may favor the reassembled ship while continuity-based criteria may favor the maintained ship.",
+          "Continuity/constitution views allow an artifact to persist through part replacement if there is the right kind of continuity (causal, functional, organizational)."
         ],
         "decisions": [
           "Adopt a pluralist reporting stance for the transcript: present multiple 'sameness' relations and note that 'numerical identity' is one (strong) relation among them.",
@@ -152,9 +152,9 @@
       "round": 6,
       "outputs": {
         "claims": [
-          "Once pluralism/context-selection is adopted, additional rounds tend to add examples rather than fundamentally new structure: most further debate is about which relation to prioritize in which context.",
-          "If a single-criterion answer is required (e.g., for a formal system), you can stipulate a privileged relation (e.g., continuity of custody/function) and accept that it will conflict with some intuitions.",
-          "The paradox remains pedagogically valuable precisely because it exposes hidden assumptions about identity (parts, continuity, convention) that are easy to conflate."
+          "A useful synthesis is pluralism: there may be multiple legitimate 'sameness' relations (same matter, same form/structure, same history, same function).",
+          "Hobbes' variant adds a rival claimant: if the discarded original planks are reassembled into a second ship, parts-based criteria may favor the reassembled ship while continuity-based criteria may favor the maintained ship.",
+          "Continuity/constitution views allow an artifact to persist through part replacement if there is the right kind of continuity (causal, functional, organizational)."
         ],
         "decisions": [
           "Close with an explicit 'if you must pick one' stipulation option, plus a reminder that other criteria will disagree.",
@@ -173,7 +173,7 @@
             "note": "No new external claims introduced; citation retained for baseline context."
           }
         ],
-        "summary": "Round 6 adds a light closing: after pluralist synthesis, remaining work is mostly application and stipulation, not new conceptual machinery."
+        "summary": "Intentional taper: restating the stable map (pluralism + Hobbes discriminator + continuity) to demonstrate diminishing novelty."
       }
     }
   ],

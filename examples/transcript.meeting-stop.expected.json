@@ -1,0 +1,42 @@
+{
+  "components": {
+    "action_readiness": null,
+    "novelty_rate": 0.0,
+    "semantic_similarity": null,
+    "structural_agreement": null
+  },
+  "hint": "Mostly converged; move to implementation and verification.",
+  "novelty_by_round": [
+    {
+      "claims": 4,
+      "new_claims": 4,
+      "round": 1
+    },
+    {
+      "claims": 3,
+      "new_claims": 1,
+      "round": 2
+    },
+    {
+      "claims": 3,
+      "new_claims": 1,
+      "round": 3
+    },
+    {
+      "claims": 3,
+      "new_claims": 1,
+      "round": 4
+    },
+    {
+      "claims": 1,
+      "new_claims": 0,
+      "round": 5
+    },
+    {
+      "claims": 2,
+      "new_claims": 0,
+      "round": 6
+    }
+  ],
+  "score": 1.0
+}

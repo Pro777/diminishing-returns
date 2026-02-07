@@ -13,7 +13,7 @@
           "A clean ending requires an explicit 'decision + next action' so momentum survives the stop."
         ],
         "decisions": [
-          "Adopt a primary stopping rule: stop when purpose is met OR when the timebox ends—whichever comes first.",
+          "Adopt a primary stopping rule: stop when purpose is met OR when the timebox ends\u2014whichever comes first.",
           "Normalize ending early when outcomes are achieved (treat it as success, not rudeness)."
         ],
         "open_questions": [
@@ -25,7 +25,10 @@
           "Draft a 15-second facilitator script for ending early."
         ],
         "citations": [
-          {"url": "https://scrumguides.org/scrum-guide.html", "note": "Timeboxes (e.g., Daily Scrum) as a norm."}
+          {
+            "url": "https://scrumguides.org/scrum-guide.html",
+            "note": "Timeboxes (e.g., Daily Scrum) as a norm."
+          }
         ],
         "summary": "Baseline: stop when purpose is met; respect timeboxes; if purpose is unclear, stop and re-scope; end with decision+next action."
       }
@@ -45,7 +48,7 @@
           "How do we detect when discussion is looping (rephrasing, not progress)?"
         ],
         "next_actions": [
-          "Define 2–3 loop-detection heuristics (e.g., no new options/risks for 10 minutes)."
+          "Define 2\u20133 loop-detection heuristics (e.g., no new options/risks for 10 minutes)."
         ],
         "citations": [],
         "summary": "Refinement: require owner/next-action to count a decision as real; begin defining loop-detection signals."
@@ -69,7 +72,10 @@
           "Define an escalation path: async memo, smaller working group, or explicit follow-up with prerequisites."
         ],
         "citations": [
-          {"url": "https://en.wikipedia.org/wiki/Parkinson%27s_law", "note": "Why timeboxes help: work expands to fill time."}
+          {
+            "url": "https://en.wikipedia.org/wiki/Parkinson%27s_law",
+            "note": "Why timeboxes help: work expands to fill time."
+          }
         ],
         "summary": "Add a DR-style loop stop-rule; decide how to exit when a decision is still needed (async or smaller group)."
       }
@@ -79,11 +85,10 @@
       "outputs": {
         "claims": [
           "Timeboxing is a default control: stop at the timebox unless there is an explicit, high-value reason to extend.",
-          "If the group is repeating points without adding new options, evidence, or constraints, the meeting has hit diminishing returns and should stop."
-        ],
-        "decisions": [
+          "If the group is repeating points without adding new options, evidence, or constraints, the meeting has hit diminishing returns and should stop.",
           "Stop rule (meeting): purpose met OR timebox hit OR loop detected (no net-new substance)."
         ],
+        "decisions": [],
         "open_questions": [],
         "next_actions": [
           "Convert this into a 1-page facilitation checklist."
@@ -117,7 +122,7 @@
         "decisions": [],
         "open_questions": [],
         "next_actions": [
-          "End." 
+          "End."
         ],
         "citations": [],
         "summary": "Taper: no meaningful new content; the right move is to stop."
@@ -126,6 +131,6 @@
   ],
   "diminishing_returns_note": {
     "recommended_stop_round": 4,
-    "rationale": "Rounds 5–6 intentionally restate the now-stable composite stop rule to demonstrate diminishing novelty."
+    "rationale": "Rounds 5\u20136 intentionally restate the now-stable composite stop rule to demonstrate diminishing novelty."
   }
 }

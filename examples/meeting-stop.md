@@ -2,8 +2,24 @@
 
 This example is a clean-room transcript meant to be instantly legible to product and business folks.
 
-- Transcript: `transcript.meeting-stop.json`
+- Transcript: [`transcript.meeting-stop.json`](./transcript.meeting-stop.json)
 - Expected behavior: DR should recommend stopping around **round 4**.
+
+## 🧮 Computed signals (from `dr score`)
+
+- **score:** `1.0`
+- **hint:** Mostly converged; move to implementation and verification.
+
+**Novelty by round**
+
+| round | claims | new_claims |
+|---:|---:|---:|
+| 1 | 4 | 4 |
+| 2 | 3 | 1 |
+| 3 | 3 | 1 |
+| 4 | 3 | 1 |
+| 5 | 1 | 0 |
+| 6 | 2 | 0 |
 
 ## What’s happening round-by-round
 

@@ -5,6 +5,21 @@ This clean-room transcript is about a familiar pattern: debates that only stop o
 - Transcript: [`transcript.chinese-room.json`](./transcript.chinese-room.json)
 - Expected behavior: DR should recommend stopping around **round 4**.
 
+## 🧮 Computed signals (from `dr score`)
+
+- **score:** `1.0`
+- **hint:** Mostly converged; move to implementation and verification.
+
+**Novelty by round**
+
+| round | claims | new_claims |
+|---:|---:|---:|
+| 1 | 4 | 4 |
+| 2 | 4 | 2 |
+| 3 | 4 | 2 |
+| 4 | 4 | 2 |
+| 5 | 4 | 0 |
+
 ## What’s happening round-by-round
 
 ### Round 1 — Set up the ambiguity (syntax vs semantics)

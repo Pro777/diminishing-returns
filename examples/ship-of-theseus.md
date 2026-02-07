@@ -2,8 +2,24 @@
 
 This clean-room transcript is engineer-adjacent: it’s really about **identity under change**.
 
-- Transcript: `transcript.ship-of-theseus.json`
+- Transcript: [`transcript.ship-of-theseus.json`](./transcript.ship-of-theseus.json)
 - Expected behavior: DR should recommend stopping around **round 5**.
+
+## 🧮 Computed signals (from `dr score`)
+
+- **score:** `1.0`
+- **hint:** Mostly converged; move to implementation and verification.
+
+**Novelty by round**
+
+| round | claims | new_claims |
+|---:|---:|---:|
+| 1 | 3 | 3 |
+| 2 | 3 | 2 |
+| 3 | 3 | 2 |
+| 4 | 3 | 2 |
+| 5 | 3 | 1 |
+| 6 | 3 | 0 |
 
 ## What’s happening round-by-round
 

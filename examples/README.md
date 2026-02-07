@@ -32,8 +32,14 @@ Each transcript includes:
 - `outputs.claims` / `outputs.decisions` / `outputs.open_questions` / `outputs.next_actions`
 - `diminishing_returns_note.recommended_stop_round`
 
+Each example also has a checked-in **expected output** (computed, not hand-waved):
+- `*.expected.json` is the JSON emitted by `dr score` for that transcript.
+
 Run:
 
 ```bash
+# after installing the package
+# (or run via PYTHONPATH=src for local dev)
 dr score examples/transcript.meeting-stop.json
 ```
+
