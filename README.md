@@ -2,6 +2,15 @@
 
 **Two ideas enter. One decision leaves.**
 
+```mermaid
+flowchart TD
+  A[Two ideas enter] --> B{{DR PIT<br/>(Thunderdome mode)}}
+  B --> C[One decision leaves]
+```
+
+<details>
+<summary>ASCII fallback</summary>
+
 ```text
    TWO IDEAS ENTER
         │
@@ -12,6 +21,8 @@
          ▼
    ONE DECISION LEAVES
 ```
+
+</details>
 
 A small utility for measuring **diminishing returns** in multi-agent / multi-LLM conversations.
 
