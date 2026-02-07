@@ -3,7 +3,8 @@
 These transcripts are **clean-room**: created only to demonstrate DR behavior.
 
 ## 1) When to stop a meeting
-File: `transcript.meeting-stop.json`
+- Transcript: `transcript.meeting-stop.json`
+- Walkthrough: `meeting-stop.md`
 
 Why it’s useful:
 - universally understood

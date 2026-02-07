@@ -1,195 +1,131 @@
 {
-  "dr_transcript_version": "0.1",
-  "mode": "RPO-local-research-loop",
-  "topic": "When to stop a meeting",
-  "created_at": "2026-02-07T00:00:00-06:00",
+  "version": "0.1",
+  "conversation_id": "example-meeting-stop",
+  "topic": "When to stop a meeting (metaphor for stopping criteria)",
   "rounds": [
     {
       "round": 1,
-      "claims": [
-        "A meeting should stop when its primary purpose is met (a decision is made, alignment is achieved, or necessary information is exchanged).",
-        "If the meeting has no clear purpose/desired outcome after an initial clarification window, continuing tends to create negative ROI; it should stop and be re-scoped.",
-        "Timeboxing is a default control: stop at the timebox unless there is an explicit, high-value reason to extend."
-      ],
-      "decisions": [
-        "Adopt a primary stopping rule: stop when purpose is met OR when the timebox ends—whichever comes first.",
-        "Normalize ending early when outcomes are achieved (treat it as success, not rudeness)."
-      ],
-      "open_questions": [
-        "What observable signals show the purpose is met?",
-        "How do we stop a meeting cleanly without social discomfort or perceived disrespect?"
-      ],
-      "next_actions": [
-        "Enumerate concrete completion signals for common meeting types.",
-        "Draft a short facilitator script for ending early and for stopping when the purpose is unclear."
-      ],
-      "citations": [
-        {
-          "id": "local:principle:timeboxing",
-          "type": "local_principle",
-          "note": "General facilitation practice: timeboxes with explicit stop conditions; no external sources used."
-        }
-      ],
-      "summary": "Baseline stop conditions: end when outcomes are achieved; stop and re-scope if purpose is unclear; respect timeboxes by default."
+      "outputs": {
+        "claims": [
+          "A meeting should stop when its primary purpose is met (decision made, alignment achieved, or required info exchanged).",
+          "Timeboxing is a default control: stop at the timebox unless there is an explicit, high-value reason to extend.",
+          "If the purpose is unclear after a short clarification window, continuing tends to create negative ROI; stop and re-scope.",
+          "A clean ending requires an explicit 'decision + next action' so momentum survives the stop."
+        ],
+        "decisions": [
+          "Adopt a primary stopping rule: stop when purpose is met OR when the timebox ends—whichever comes first.",
+          "Normalize ending early when outcomes are achieved (treat it as success, not rudeness)."
+        ],
+        "open_questions": [
+          "What observable signals show the purpose is met?",
+          "How do we stop cleanly without social discomfort?"
+        ],
+        "next_actions": [
+          "List concrete completion signals for common meeting types.",
+          "Draft a 15-second facilitator script for ending early."
+        ],
+        "citations": [
+          {"url": "https://scrumguides.org/scrum-guide.html", "note": "Timeboxes (e.g., Daily Scrum) as a norm."}
+        ],
+        "summary": "Baseline: stop when purpose is met; respect timeboxes; if purpose is unclear, stop and re-scope; end with decision+next action."
+      }
     },
     {
       "round": 2,
-      "claims": [
-        "A meeting should stop (or pause) when prerequisites are missing (needed decision-maker, required data, or shared context), because forward progress is impossible.",
-        "Stop when discussion is looping: participants are repeating the same arguments without adding new information, options, or convergence.",
-        "Stop when the marginal value of continued discussion is below the marginal cost of attendee time (negative marginal ROI).",
-        "If interaction becomes psychologically unsafe (escalation, personal attacks, or people shutting down), stopping or pausing preserves trust better than pushing through."
-      ],
-      "decisions": [
-        "Add explicit stop triggers: missing prerequisites, looping, negative marginal ROI, and psychological-safety escalation.",
-        "Treat escalation as a hard pause/stop signal; reset with structure or a smaller group."
-      ],
-      "open_questions": [
-        "What simple in-meeting heuristics approximate marginal ROI without heavy calculation?",
-        "What indicators best separate productive debate from harmful escalation?"
-      ],
-      "next_actions": [
-        "Create a short prerequisites checklist to run in the first 2–3 minutes.",
-        "Define a looping detector (e.g., 'same point repeated twice with no new info' or 'no new options in 10 minutes').",
-        "Define an escalation pause protocol (e.g., call a 2-minute break, restate shared goal, decide whether to continue)."
-      ],
-      "citations": [
-        {
-          "id": "local:heuristic:marginal-roi",
-          "type": "local_heuristic",
-          "note": "Economic marginal value framing applied to synchronous time; local reasoning only."
-        },
-        {
-          "id": "local:principle:psychological-safety",
-          "type": "local_principle",
-          "note": "Facilitation norm: protect psychological safety; stop/pause when conversation becomes harmful; local general knowledge."
-        }
-      ],
-      "summary": "Operational stop triggers: if you can’t progress (missing inputs), if you’re looping, if ROI goes negative, or if safety breaks down."
+      "outputs": {
+        "claims": [
+          "A meeting should stop when its primary purpose is met (decision made, alignment achieved, or required info exchanged).",
+          "Timeboxing is a default control: stop at the timebox unless there is an explicit, high-value reason to extend.",
+          "A useful meeting ends with an explicit owner + next action + deadline (otherwise the 'decision' is theater)."
+        ],
+        "decisions": [
+          "Define meeting 'done' as: decision recorded + owner assigned + next action named."
+        ],
+        "open_questions": [
+          "How do we detect when discussion is looping (rephrasing, not progress)?"
+        ],
+        "next_actions": [
+          "Define 2–3 loop-detection heuristics (e.g., no new options/risks for 10 minutes)."
+        ],
+        "citations": [],
+        "summary": "Refinement: require owner/next-action to count a decision as real; begin defining loop-detection signals."
+      }
     },
     {
       "round": 3,
-      "claims": [
-        "Stop early when the remaining work is best done asynchronously (writing, compiling, drafting), then assign an owner and artifact.",
-        "Stop when the conversation decomposes into distinct subtopics needing different stakeholders; split the workstream instead of keeping everyone.",
-        "Stop when you have reached a decision-quality threshold; additional discussion increases confusion (analysis paralysis) more than it improves correctness.",
-        "A good stopping moment is when next steps are clear; continuing to 'polish' verbally often adds little compared to documenting and executing."
-      ],
-      "decisions": [
-        "Introduce an 'async handoff' stopping rule for drafting/compiling work.",
-        "Use 'split-and-delegate' when the meeting becomes multiple meetings; end the plenary and schedule targeted follow-ups."
-      ],
-      "open_questions": [
-        "What decision-quality threshold criteria fit different meeting types (status vs. decision vs. brainstorm)?",
-        "How do we ensure async handoffs reliably complete (prevent 'it fell through')?"
-      ],
-      "next_actions": [
-        "Define meeting-type stop criteria (decision, status, planning, brainstorming).",
-        "Create a handoff template: purpose, current state, decision needed, owner, deadline, and where it will be posted.",
-        "Add a rule: no meeting ends without captured decisions/actions/open issues."
-      ],
-      "citations": [
-        {
-          "id": "local:principle:sync-for-interaction",
-          "type": "local_principle",
-          "note": "Local synthesis: reserve synchronous time for interaction and decisions; move drafting to async when possible."
-        }
-      ],
-      "summary": "Round 3 focuses on format choice: end meetings when async work, splitting threads, or decision-quality thresholds make continued plenary time wasteful."
+      "outputs": {
+        "claims": [
+          "A meeting should stop when its primary purpose is met (decision made, alignment achieved, or required info exchanged).",
+          "If the purpose is unclear after a short clarification window, continuing tends to create negative ROI; stop and re-scope.",
+          "If the group is repeating points without adding new options, evidence, or constraints, the meeting has hit diminishing returns and should stop."
+        ],
+        "decisions": [
+          "Add a loop stop-rule: stop if no net-new options/evidence/constraints appear for a timeboxed interval."
+        ],
+        "open_questions": [
+          "What should happen when a meeting stops but a decision is still required?"
+        ],
+        "next_actions": [
+          "Define an escalation path: async memo, smaller working group, or explicit follow-up with prerequisites."
+        ],
+        "citations": [
+          {"url": "https://en.wikipedia.org/wiki/Parkinson%27s_law", "note": "Why timeboxes help: work expands to fill time."}
+        ],
+        "summary": "Add a DR-style loop stop-rule; decide how to exit when a decision is still needed (async or smaller group)."
+      }
     },
     {
       "round": 4,
-      "claims": [
-        "Stop when the meeting has drifted from the original goal (scope drift); re-charter the objective or schedule a new session with the correct scope and attendees.",
-        "Stop when the group is effectively converged but continues for reassurance or habit; provide a crisp recap and close.",
-        "For recurring meetings, stop/cancel/redesign if repeated cycles do not produce outputs (decisions, actions, resolved issues).",
-        "Adding explicit 'completion checks' (e.g., a midpoint and final 'are we done?' checkpoint) legitimizes ending early and surfaces hidden blockers."
-      ],
-      "decisions": [
-        "Add scope drift and reassurance loops as explicit stopping conditions.",
-        "Adopt a recurring-meeting health rule: if output is consistently low over several instances, redesign or cancel.",
-        "Standardize completion checkpoints to normalize ending early."
-      ],
-      "open_questions": [
-        "What is a reasonable threshold (N meetings) for 'consistently low output' before canceling/redesigning?",
-        "How can leaders reduce the social pressure to 'use the whole hour'?"
-      ],
-      "next_actions": [
-        "Propose a lightweight metric: outputs per hour (decisions + actions + resolved blockers).",
-        "Draft scripts: (1) scope drift reset, (2) reassurance-loop close.",
-        "Set a default threshold (e.g., N=3) with an explicit override policy."
-      ],
-      "citations": [
-        {
-          "id": "local:practice:process-retro",
-          "type": "local_practice",
-          "note": "Local practice: periodically evaluate recurring rituals with simple output metrics; no external sources used."
-        }
-      ],
-      "summary": "Round 4 adds meta-level stopping: end scope drift, end reassurance loops, and cancel/redesign recurring meetings that repeatedly fail to create outputs; use explicit completion checks."
+      "outputs": {
+        "claims": [
+          "Timeboxing is a default control: stop at the timebox unless there is an explicit, high-value reason to extend.",
+          "If the group is repeating points without adding new options, evidence, or constraints, the meeting has hit diminishing returns and should stop."
+        ],
+        "decisions": [
+          "Stop rule (meeting): purpose met OR timebox hit OR loop detected (no net-new substance)."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Convert this into a 1-page facilitation checklist."
+        ],
+        "citations": [],
+        "summary": "Convergence: the stop rule is now a compact composite; remaining work is packaging (checklist + script)."
+      }
     },
     {
       "round": 5,
-      "claims": [
-        "Most stopping triggers can be summarized into three buckets: (1) achieved (outcome reached), (2) blocked (can’t progress), (3) suboptimal (better done elsewhere/async or ROI is negative).",
-        "Stopping feels easier when framed as respect for time: 'We’ve got what we need; let’s give time back.'",
-        "A consistent closing ritual reduces anxiety about ending early by ensuring alignment is captured before people leave."
-      ],
-      "decisions": [
-        "Consolidate prior rounds into a 3-bucket stopping taxonomy.",
-        "Adopt a standard closing ritual: recap decisions, recap actions (owner+date), list open issues, confirm communication channel, then end."
-      ],
-      "open_questions": [
-        "What closing ritual is shortest while still preventing post-meeting confusion?"
-      ],
-      "next_actions": [
-        "Write a one-page 'When to stop a meeting' guide using the 3-bucket taxonomy.",
-        "Create a meeting-notes footer template that matches the closing ritual."
-      ],
-      "citations": [
-        {
-          "id": "local:synthesis:three-buckets",
-          "type": "local_synthesis",
-          "note": "Synthesis of rounds 1–4; novelty intentionally reduced."
-        }
-      ],
-      "summary": "Round 5 mostly synthesizes: a compact 3-bucket model plus a predictable closing ritual; limited new concepts by design."
+      "outputs": {
+        "claims": [
+          "Stop rule (meeting): purpose met OR timebox hit OR loop detected (no net-new substance)."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "Write the checklist and ship it; don't extend the meeting about meetings."
+        ],
+        "citations": [],
+        "summary": "Very low novelty: restating the composite rule and pushing toward execution."
+      }
     },
     {
       "round": 6,
-      "claims": [
-        "When uncertain whether to stop, use a fast 'continue?' check: end now, extend briefly with a specific objective, or schedule a follow-up with a smaller group.",
-        "Extensions should be small and objective-bound; otherwise end and convert the remainder into an assigned artifact or follow-up.",
-        "The main risk of stopping early is loss of alignment; mitigate by documenting decisions, actions, and open issues before closing."
-      ],
-      "decisions": [
-        "Add a minimal ambiguity protocol: quick check + tiny extensions only with explicit objective.",
-        "Re-emphasize documentation as the safety net when stopping early."
-      ],
-      "open_questions": [
-        "How should the 'continue?' check be run in very large meetings without itself becoming a time sink?"
-      ],
-      "next_actions": [
-        "Provide two variants of the check: verbal (small meetings) and chat/poll (large meetings).",
-        "Add a final checklist item to the closing ritual: 'Have we captured decisions/actions/open issues in a shared place?'"
-      ],
-      "citations": [
-        {
-          "id": "local:practice:temperature-check",
-          "type": "local_practice",
-          "note": "Common facilitation pattern: quick temperature checks (e.g., brief polling) to decide whether to continue; local general knowledge."
-        }
-      ],
-      "summary": "Round 6 adds only small refinements (a quick 'continue?' protocol) and reiterates documentation; novelty is intentionally low to reflect diminishing returns."
+      "outputs": {
+        "claims": [
+          "A clean ending requires an explicit 'decision + next action' so momentum survives the stop.",
+          "Stop rule (meeting): purpose met OR timebox hit OR loop detected (no net-new substance)."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "End." 
+        ],
+        "citations": [],
+        "summary": "Taper: no meaningful new content; the right move is to stop."
+      }
     }
   ],
   "diminishing_returns_note": {
-    "novelty_profile": {
-      "rounds_1_to_2": "Foundational rules + operational stop triggers.",
-      "rounds_3_to_4": "Structural improvements (async handoff, split meetings, scope drift, recurring-meeting evaluation).",
-      "rounds_5_to_6": "Synthesis and light protocol refinements; minimal new conceptual structure."
-    },
-    "recommended_stop_round": 5,
-    "rationale": "By round 5, the model is stable; additional rounds mostly package the same ideas into scripts/templates and add minor facilitation mechanics."
+    "recommended_stop_round": 4,
+    "rationale": "Rounds 5–6 intentionally restate the now-stable composite stop rule to demonstrate diminishing novelty."
   }
 }
