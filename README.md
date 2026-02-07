@@ -98,8 +98,8 @@ Each example includes a `diminishing_returns_note.recommended_stop_round` to mak
 ## 📎 References (receipts)
 
 If you want the nerdy provenance: see
-- `docs/rubric.md` — what DR measures (and why)
-- `docs/references.md` — short annotated bibliography
+- [`docs/rubric.md`](./docs/rubric.md) — what DR measures (and why)
+- [`docs/references.md`](./docs/references.md) — short annotated bibliography
 
 ## License
 
