@@ -19,13 +19,22 @@ def load_transcript(path: str | Path) -> Dict[str, Any]:
     """
 
     p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"Transcript not found: {p}")
+
     if p.suffix.lower() == ".jsonl":
         events: List[Dict[str, Any]] = []
-        for line in p.read_text(encoding="utf-8").splitlines():
+        for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), start=1):
             line = line.strip()
             if not line:
                 continue
-            events.append(json.loads(line))
+            try:
+                parsed = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid JSONL at {p}:{i}: {exc.msg}") from exc
+            if not isinstance(parsed, dict):
+                raise ValueError(f"Invalid JSONL event at {p}:{i}: expected an object.")
+            events.append(parsed)
 
         header = next((e for e in events if e.get("type") == "transcript_header"), {})
         rounds = [
@@ -33,6 +42,7 @@ def load_transcript(path: str | Path) -> Dict[str, Any]:
             for e in events
             if e.get("type") == "round"
         ]
+        rounds.sort(key=lambda r: (0, r["round"]) if isinstance(r.get("round"), int) else (1, 0))
 
         note = next((e for e in events if e.get("type") == "diminishing_returns_note"), None)
         out: Dict[str, Any] = {
