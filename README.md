@@ -1,12 +1,8 @@
 # Diminishing Returns
 
-**Two ideas enter. One decision leaves.**
-
-```mermaid
-flowchart TD
-  A[Two ideas enter] --> B[DR PIT - Thunderdome mode]
-  B --> C[One decision leaves]
-```
+<p align="center">
+  <img src="docs/dr-hero.svg" alt="Two ideas enter. One decision leaves." width="800"/>
+</p>
 
 <details>
 <summary>ASCII fallback</summary>
