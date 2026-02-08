@@ -95,6 +95,17 @@ dr score trace.jsonl
 
 Each example includes a `diminishing_returns_note.recommended_stop_round` to make expected behavior explicit.
 
+## 🌐 DR as Protocol
+
+DR started as a scoring library. It's becoming a **trust signal for inter-agent communication.**
+
+When Agent A sends a recommendation to Agent B, a DR attestation tells B: *how much scrutiny did this receive?*
+
+- [`spec/attestation.v0.1.md`](./spec/attestation.v0.1.md) — **Attestation spec** (wire format, trust tiers, verification)
+- [`docs/roadmap.md`](./docs/roadmap.md) — **Roadmap** (scoring → protocol → trust tiers)
+
+Three trust tiers: **local** (markdown, trusted agents), **federated** (signed, partially trusted), **internet** (full evidence audit, untrusted).
+
 ## 📎 References (receipts)
 
 If you want the nerdy provenance: see
