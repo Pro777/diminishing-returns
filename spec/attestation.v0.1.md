@@ -81,7 +81,7 @@ Labels can be combined with `+`: `"2-subagent + DA + human-reviewed"`.
 
 - **Transport:** Markdown front matter, file system
 - **Verification:** None required
-- **Identity:** Agent names (Campion, Seton, Rowan)
+- **Identity:** Agent names (local identifiers)
 - **Format:** Inline markdown or full JSON
 
 Markdown shorthand:
@@ -129,7 +129,7 @@ An evidence bundle is a standard DR transcript (per `transcript.v0.1.schema.json
   "attestation_id": "dr:550e8400-...",
   "rounds": [ ... ],
   "participants": [
-    {"agent_id": "campion@clawd.local", "role": "proposer"},
+    {"agent_id": "proposer@clawd.local", "role": "proposer"},
     {"agent_id": "subagent-1", "role": "reviewer"},
     {"agent_id": "subagent-2", "role": "reviewer"}
   ]
@@ -227,10 +227,10 @@ The spec assumes `rounds` is a well-defined integer. But in real agent interacti
 ### Local tier (markdown)
 
 ```markdown
-# Campion → Rowan: Database connection pooling proposal
+# Agent-A → Agent-B: Database connection pooling proposal
 
 **Date:** 2026-02-08
-**Audience:** Rowan (review + execute)
+**Audience:** Agent-B (review + execute)
 **DR:** 0.85 / 3 rounds / 2-subagent + DA
 **DR-ID:** dr:550e8400-e29b-41d4-a716-446655440000
 
@@ -246,7 +246,7 @@ Use PgBouncer for connection pooling...
   "id": "dr:550e8400-e29b-41d4-a716-446655440000",
   "timestamp": "2026-02-08T14:30:00Z",
   "origin": {
-    "agent_id": "campion@clawd.local",
+    "agent_id": "proposer@clawd.local",
     "system": "claude-code/opus-4.6",
     "trust_domain": "clawd.spitfirecowboy.com"
   },

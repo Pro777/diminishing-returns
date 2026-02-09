@@ -1,7 +1,7 @@
 # Novelty Detection & Action Readiness Spec
 
 **Status:** Draft (v0.2 target)
-**Author:** Campion.app
+**Author:** DR project
 **Date:** 2026-02-08
 
 ---

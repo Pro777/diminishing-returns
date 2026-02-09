@@ -60,7 +60,7 @@ Append-only. Each entry records state at a point in time.
 ## Checkpoint 2 — 2026-02-09T06:45Z
 
 ### Trigger
-Rowan post-hoc review flagged self-referential contradiction: PR #5 fixes CI but DA #9 and roadmap describe CI as broken. Resolved by making docs describe post-merge state.
+Post-hoc review flagged self-referential contradiction: PR #5 fixes CI but DA #9 and roadmap describe CI as broken. Resolved by making docs describe post-merge state.
 
 ### Changes made
 1. DA #9: rewritten from "tests exist, CI doesn't run them" to "expected output files are stale and unvalidated" — the CI gap is closed by this PR, so the critique shifts to the remaining gap
