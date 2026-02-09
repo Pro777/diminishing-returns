@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -65,6 +68,53 @@ class JsonlLoadTests(unittest.TestCase):
                 load_transcript(path)
 
         self.assertIn("trace.jsonl:2", str(ctx.exception))
+
+    def test_sorts_json_rounds_by_round_number(self) -> None:
+        transcript = {
+            "version": "0.1",
+            "conversation_id": "ordered-json",
+            "rounds": [
+                {"round": 3, "outputs": {"claims": ["C"]}},
+                {"round": 1, "outputs": {"claims": ["A"]}},
+                {"round": 2, "outputs": {"claims": ["B"]}},
+            ],
+        }
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "transcript.json"
+            path.write_text(json.dumps(transcript), encoding="utf-8")
+            loaded = load_transcript(path)
+
+        self.assertEqual([r["round"] for r in loaded["rounds"]], [1, 2, 3])
+
+    def test_reports_json_parse_errors_with_file_line(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "bad.json"
+            path.write_text('{"version":"0.1"\n', encoding="utf-8")
+            with self.assertRaises(ValueError) as ctx:
+                load_transcript(path)
+
+        self.assertIn("bad.json:2", str(ctx.exception))
+
+
+class CliScoreTests(unittest.TestCase):
+    def test_cli_exits_non_zero_for_invalid_json_with_context(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "bad.json"
+            path.write_text('{"rounds":[}\n', encoding="utf-8")
+            env = dict(os.environ)
+            env["PYTHONPATH"] = "src"
+            proc = subprocess.run(
+                [sys.executable, "-c", "from dr.cli import main; main()", "score", str(path)],
+                cwd=Path(__file__).resolve().parents[1],
+                env=env,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+        self.assertEqual(proc.returncode, 2)
+        self.assertIn("error:", proc.stderr)
+        self.assertIn("bad.json:1", proc.stderr)
 
 
 if __name__ == "__main__":
