@@ -7,8 +7,9 @@ This clean-room transcript is about a familiar pattern: debates that only stop o
 
 ## 🧮 Computed signals (from `dr score`)
 
-- **score:** `1.0`
-- **hint:** Mostly converged; move to implementation and verification.
+- **score:** `0.75`
+- **stop_recommendation:** `false` (only 1 consecutive low-novelty round, needs 2)
+- **hint:** Still generating novel ideas; continue another round.
 
 **Novelty by round**
 

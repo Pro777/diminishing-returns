@@ -7,8 +7,9 @@ This clean-room transcript is engineer-adjacent: it’s really about **identity 
 
 ## 🧮 Computed signals (from `dr score`)
 
-- **score:** `1.0`
-- **hint:** Mostly converged; move to implementation and verification.
+- **score:** `0.83`
+- **stop_recommendation:** `false` (blocker: open_questions_in_latest_round)
+- **hint:** Novelty is tapering, but unresolved questions remain; run one focused clarification round.
 
 **Novelty by round**
 

@@ -8,7 +8,8 @@ This example is a clean-room transcript meant to be instantly legible to product
 ## 🧮 Computed signals (from `dr score`)
 
 - **score:** `1.0`
-- **hint:** Mostly converged; move to implementation and verification.
+- **stop_recommendation:** `true` (k_consecutive_low_novelty, confidence 0.75)
+- **hint:** Diminishing returns detected for consecutive rounds; move to implementation and verification.
 
 **Novelty by round**
 

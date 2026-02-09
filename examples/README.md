@@ -43,3 +43,27 @@ dr score examples/transcript.meeting-stop.json
 dr score examples/trace.meeting-stop.jsonl
 ```
 
+---
+
+## Score range across examples
+
+Post-hardening, the three examples now show meaningful variation:
+
+| Example | Score | Stop recommended? | Why |
+|---------|-------|-------------------|-----|
+| Meeting stop | 1.0 | Yes | 2 consecutive low-novelty rounds, no blockers |
+| Ship of Theseus | 0.83 | No | Open questions in latest round block the stop signal |
+| Chinese Room | 0.75 | No | Only 1 consecutive low-novelty round (needs 2) |
+
+This demonstrates three different DR outcomes: full convergence, blocked convergence, and still-productive.
+
+## What's still missing
+
+- A **very low-DR** transcript (score < 0.5) showing a conversation in its early productive phase
+- A **false convergence** transcript where agents agree but are wrong
+- A **blocker-cleared** example where removing open questions flips the stop recommendation
+
+These gaps are tracked in the [roadmap](../docs/roadmap.md).
+
+> **Note:** The `*.expected.json` files are checked in but are now stale (they predate the hardening changes). They are not validated by CI. Updating them and adding automated validation is tracked as a v0.1 stabilization item.
+
