@@ -167,6 +167,53 @@ An attestation can be revoked by publishing a new attestation with:
 
 ---
 
+## Implementation Maturity
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Markdown shorthand (`**DR:** ...`) | In use | Local tier convention |
+| Full attestation JSON object | Specified | No tooling generates this yet |
+| `dr attest` CLI | Not implemented | Planned for v0.2 |
+| UUID generation (`dr:<UUIDv4>`) | Not implemented | Planned for v0.2 |
+| Evidence bundles | Specified | No tooling creates or consumes these |
+| Sigstore signing | Specified | Not implemented; dependency not added |
+| `dr verify` re-scoring | Specified | Planned for v0.4 |
+| Attestation DAG | Specified | No tooling or visualization exists |
+| Revocation | Specified | No mechanism to discover revocations |
+| Expiration | Specified | No tooling enforces TTL checks |
+
+---
+
+## Open Questions
+
+These are design decisions that remain unresolved. They should be answered before the spec moves beyond draft status.
+
+### 1. Score Semantics Across Versions
+
+If v0.1 scores are based on exact-string novelty and v0.2 scores use semantic embeddings, a `score: 0.85` means different things depending on which version produced it. Should the attestation include `scoring_version` separately from `dr_version`? Or should `dr_version` be bumped whenever scoring semantics change?
+
+### 2. Evidence Bundle Privacy
+
+Evidence bundles contain full conversation transcripts. In federated and internet tiers, this may expose proprietary reasoning, internal deliberation, or sensitive context. Should the spec define a "redacted evidence" format that proves convergence without revealing content?
+
+### 3. Clock Trust
+
+The `timestamp` field is self-reported. A malicious agent can backdate or future-date an attestation. At the internet tier, should timestamps be attested by a third party (e.g., RFC 3161 timestamping)?
+
+### 4. Score Gaming
+
+An agent can fabricate a high DR score by constructing a synthetic transcript that converges on demand. At the internet tier, `dr verify` can catch this by re-scoring — but only if the evidence is genuine. Should the spec require evidence bundles at the federated tier, not just the internet tier?
+
+### 5. Revocation Discovery
+
+The revocation mechanism (publish a new attestation with `supersedes` and `score: 0.0`) assumes the receiver will discover the revoking attestation. There is no push notification, no registry, and no guaranteed delivery. Is this acceptable, or does revocation need a side channel?
+
+### 6. What Counts as a "Round"?
+
+The spec assumes `rounds` is a well-defined integer. But in real agent interactions, a "round" might be a single exchange, a batch of parallel subagent calls, or a human review that spans days. Should the spec define what constitutes a round, or leave it to the attestor?
+
+---
+
 ## Non-Goals (v0.1)
 
 - **Correctness verification.** DR measures convergence, not truth. An attestation with score 1.0 means "fully converged," not "definitely correct."
