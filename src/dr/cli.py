@@ -18,11 +18,16 @@ def main() -> None:
     if args.cmd == "score":
         try:
             data = load_transcript(args.path)
+        except (FileNotFoundError, ValueError) as exc:
+            print(f"error: {args.path}: {exc}", file=sys.stderr)
+            raise SystemExit(2)
+
+        try:
             result = score_transcript(data)
             print(json.dumps(result, indent=2, sort_keys=True))
             return
-        except (FileNotFoundError, ValueError) as exc:
-            print(f"error: {exc}", file=sys.stderr)
+        except ValueError as exc:
+            print(f"error: {args.path}: {exc}", file=sys.stderr)
             raise SystemExit(2)
 
     raise SystemExit(2)
