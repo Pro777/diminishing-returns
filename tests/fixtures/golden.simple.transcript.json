@@ -1,0 +1,20 @@
+{
+  "version": "0.1",
+  "conversation_id": "golden-simple",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": ["A", "B"],
+        "next_actions": ["write plan"]
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": ["A"],
+        "next_actions": ["write plan"]
+      }
+    }
+  ]
+}

@@ -14,6 +14,7 @@ from dr.score import score_transcript
 
 ROOT = Path(__file__).resolve().parents[1]
 CALIBRATION_DIR = ROOT / "examples" / "calibration"
+FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
 
 class ScoreTranscriptTests(unittest.TestCase):
@@ -57,6 +58,15 @@ class ScoreTranscriptTests(unittest.TestCase):
         self.assertEqual(result["stop_recommendation"]["novelty_classification"], "LOW")
         self.assertGreater(result["components"]["novelty_rate_L0"], 0.9)
         self.assertLess(result["components"]["novelty_rate_L1"], 0.15)
+
+
+class GoldenJsonTests(unittest.TestCase):
+    def test_golden_output_shape_and_values(self) -> None:
+        transcript = json.loads((FIXTURES_DIR / "golden.simple.transcript.json").read_text(encoding="utf-8"))
+        expected = json.loads((FIXTURES_DIR / "golden.simple.expected.json").read_text(encoding="utf-8"))
+
+        result = score_transcript(transcript)
+        self.assertEqual(result, expected)
 
 
 class CalibrationExamplesTests(unittest.TestCase):
