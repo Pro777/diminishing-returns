@@ -1,0 +1,57 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-high-novelty-high-readiness",
+  "topic": "Productive divergence with actions: new ideas plus concrete next steps (should CONTINUE)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The CI pipeline takes 45 minutes and is the main developer bottleneck.",
+          "Test parallelization could cut the build time in half.",
+          "Docker layer caching is not being used effectively."
+        ],
+        "decisions": [
+          "Prioritize CI speed as a Q1 initiative."
+        ],
+        "open_questions": [
+          "Which test suites are the slowest?"
+        ],
+        "next_actions": [
+          "Run `pytest --durations=50` to identify the slowest tests.",
+          "Audit the Dockerfile for layer caching opportunities."
+        ],
+        "summary": "CI speed identified as top priority. Concrete investigation steps."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Integration tests account for 80% of CI time.",
+          "Splitting integration tests into parallel shards could save 20 minutes.",
+          "Switching from Docker-in-Docker to kaniko would improve cache hit rates.",
+          "A build cache service (e.g., Depot) could eliminate redundant builds."
+        ],
+        "decisions": [
+          "Split integration tests into 4 parallel shards."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Create a pytest-split configuration for 4 parallel shards.",
+          "Benchmark kaniko vs Docker-in-Docker for our build.",
+          "Get a trial account for Depot and test with one service."
+        ],
+        "summary": "Root cause found. Multiple concrete solutions identified with specific next steps."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "HIGH",
+    "novelty_rate_L0": 1.0,
+    "novelty_rate_L1_approximate": 1.0,
+    "readiness_classification": "HIGH",
+    "stop_recommendation": "CONTINUE",
+    "notes": "High novelty (every claim in round 2 is genuinely new) AND high readiness (specific imperative actions: 'create', 'benchmark', 'get'). Despite the temptation to SHIP because readiness is high, the conversation is still producing valuable new information. The decision matrix correctly says CONTINUE — let the productive conversation run."
+  }
+}
