@@ -1,0 +1,76 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-low-novelty-high-readiness",
+  "topic": "Converged discussion with clear executable actions (should SHIP)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The deployment pipeline needs a staging environment before production.",
+          "Blue-green deployment reduces rollback risk.",
+          "Health checks must pass before traffic cutover."
+        ],
+        "decisions": [
+          "Use blue-green deployment via AWS ALB."
+        ],
+        "open_questions": [
+          "What health check endpoint should we use?",
+          "How long should the canary window be?"
+        ],
+        "next_actions": [
+          "Design the health check endpoint.",
+          "Define canary window duration."
+        ],
+        "summary": "Deployment strategy: blue-green with health checks."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Blue-green deployment reduces rollback risk.",
+          "Health checks must pass before traffic cutover.",
+          "Canary window of 5 minutes balances speed and safety."
+        ],
+        "decisions": [
+          "Set canary window to 5 minutes.",
+          "Use /healthz as the health check endpoint."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Implement /healthz endpoint returning 200 with version info.",
+          "Update ALB target group health check to /healthz.",
+          "Configure blue-green deployment in the CI pipeline."
+        ],
+        "summary": "Resolved open questions. Canary window and health check endpoint decided."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "Blue-green deployment reduces rollback risk.",
+          "Health checks must pass before traffic cutover.",
+          "Canary window of 5 minutes balances speed and safety."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "Implement /healthz endpoint returning 200 with version info.",
+          "Update ALB target group health check to /healthz.",
+          "Configure blue-green deployment in the CI pipeline."
+        ],
+        "summary": "No new claims. Ready to implement."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
+    "readiness_classification": "HIGH",
+    "stop_recommendation": "SHIP",
+    "notes": "Classic SHIP scenario: claims have converged, open questions resolved, next actions are specific and imperative ('implement', 'update', 'configure' with concrete targets). This is the goal state for a productive DR conversation."
+  }
+}

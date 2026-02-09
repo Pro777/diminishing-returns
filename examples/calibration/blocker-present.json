@@ -1,0 +1,74 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-blocker-present",
+  "topic": "Low novelty but a blocker prevents execution (should ESCALATE)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The feature requires OAuth integration with the billing provider.",
+          "We need API credentials from the billing team.",
+          "The feature spec is complete and reviewed."
+        ],
+        "decisions": [
+          "Implement OAuth PKCE flow for billing integration."
+        ],
+        "open_questions": [
+          "When will the billing team provide API credentials?"
+        ],
+        "next_actions": [
+          "Request API credentials from the billing team.",
+          "Write the OAuth client scaffolding while waiting."
+        ],
+        "summary": "Feature ready to build but blocked on external dependency."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The feature requires OAuth integration with the billing provider.",
+          "We need API credentials from the billing team.",
+          "The feature spec is complete and reviewed."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Blocked: waiting on API credentials from billing team.",
+          "Can we use sandbox credentials in the meantime?"
+        ],
+        "next_actions": [
+          "Waiting on billing team for API credentials.",
+          "Write the OAuth client scaffolding while waiting."
+        ],
+        "summary": "No progress. Still blocked on external credentials."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The feature requires OAuth integration with the billing provider.",
+          "We need API credentials from the billing team.",
+          "The feature spec is complete and reviewed."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Blocked: waiting on API credentials from billing team."
+        ],
+        "next_actions": [
+          "Need access to billing API sandbox to unblock development."
+        ],
+        "summary": "Still blocked. Conversation is looping without resolution."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
+    "readiness_classification": "LOW",
+    "stop_recommendation": "ESCALATE",
+    "notes": "Novelty is zero (exact repeats). Readiness is low because of blocker keywords: 'blocked', 'waiting on', 'need access'. Even though there are next_actions, the blocker_score = 0.0 drags readiness down. ESCALATE is correct: the conversation cannot resolve this — needs human intervention to unblock the dependency."
+  }
+}

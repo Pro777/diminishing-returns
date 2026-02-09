@@ -1,46 +1,118 @@
 {
   "components": {
-    "action_readiness": 1.0,
-    "novelty_rate": 0.25,
+    "action_readiness": 0.85,
+    "action_readiness_detail": {
+      "blocker_score": 1.0,
+      "next_actions_score": 0.7,
+      "open_questions_score": 1.0
+    },
+    "novelty_rate": 0.0,
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
     "semantic_similarity": null,
     "structural_agreement": null
   },
-  "hint": "Still generating novel ideas; continue another round.",
+  "hint": "Converged. Ship the decision and verify.",
   "novelty_by_round": [
     {
       "claims": 4,
       "new_claims": 4,
+      "new_claims_L0": 4,
+      "new_claims_L1": 4,
+      "novelty_rate": 1.0,
+      "novelty_rate_L0": 1.0,
+      "novelty_rate_L1": 1.0,
       "round": 1
     },
     {
       "claims": 4,
       "new_claims": 2,
+      "new_claims_L0": 2,
+      "new_claims_L1": 2,
+      "novelty_rate": 0.5,
+      "novelty_rate_L0": 0.5,
+      "novelty_rate_L1": 0.5,
       "round": 2
     },
     {
       "claims": 4,
       "new_claims": 2,
+      "new_claims_L0": 2,
+      "new_claims_L1": 2,
+      "novelty_rate": 0.5,
+      "novelty_rate_L0": 0.5,
+      "novelty_rate_L1": 0.5,
       "round": 3
     },
     {
       "claims": 4,
       "new_claims": 2,
+      "new_claims_L0": 2,
+      "new_claims_L1": 2,
+      "novelty_rate": 0.5,
+      "novelty_rate_L0": 0.5,
+      "novelty_rate_L1": 0.5,
       "round": 4
     },
     {
       "claims": 4,
       "new_claims": 0,
+      "new_claims_L0": 0,
+      "new_claims_L1": 0,
+      "novelty_rate": 0.0,
+      "novelty_rate_L0": 0.0,
+      "novelty_rate_L1": 0.0,
       "round": 5
     }
   ],
-  "score": 0.75,
+  "readiness_by_round": [
+    {
+      "action_readiness": 0.64,
+      "blocker_score": 1.0,
+      "next_actions_score": 0.7,
+      "open_questions_score": 0.3,
+      "readiness_classification": "MEDIUM",
+      "round": 1
+    },
+    {
+      "action_readiness": 0.76,
+      "blocker_score": 1.0,
+      "next_actions_score": 0.7,
+      "open_questions_score": 0.7,
+      "readiness_classification": "HIGH",
+      "round": 2
+    },
+    {
+      "action_readiness": 0.38,
+      "blocker_score": 1.0,
+      "next_actions_score": 0.3,
+      "open_questions_score": 0.1,
+      "readiness_classification": "LOW",
+      "round": 3
+    },
+    {
+      "action_readiness": 0.85,
+      "blocker_score": 1.0,
+      "next_actions_score": 0.7,
+      "open_questions_score": 1.0,
+      "readiness_classification": "HIGH",
+      "round": 4
+    },
+    {
+      "action_readiness": 0.85,
+      "blocker_score": 1.0,
+      "next_actions_score": 0.7,
+      "open_questions_score": 1.0,
+      "readiness_classification": "HIGH",
+      "round": 5
+    }
+  ],
+  "score": 1.0,
   "stop_recommendation": {
-    "blockers": [],
-    "confidence": 0.4375,
-    "k_required": 2,
-    "max_consecutive_low_novelty_rounds": 1,
-    "reason": "continue_or_clarify",
-    "recommended": false,
-    "warnings": []
+    "k_consecutive_low_novelty": 1,
+    "novelty_classification": "LOW",
+    "rationale": "Novelty is LOW (k-consecutive low rounds: 1). Action readiness is HIGH.",
+    "readiness_classification": "HIGH",
+    "signal": "SHIP"
   }
 }

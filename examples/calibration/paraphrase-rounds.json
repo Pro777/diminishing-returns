@@ -1,0 +1,69 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-paraphrase-rounds",
+  "topic": "Paraphrased claims that should NOT count as novel (adversarial: L0 misses, L1 catches)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "Use connection pooling to reduce database latency.",
+          "Cache frequently accessed queries at the application layer.",
+          "Add an index on the user_id column for faster lookups."
+        ],
+        "decisions": [
+          "Adopt PgBouncer for connection pooling."
+        ],
+        "open_questions": [
+          "Which cache backend: Redis or Memcached?"
+        ],
+        "next_actions": [
+          "Benchmark PgBouncer with production-like load."
+        ],
+        "summary": "Three database optimization strategies identified."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Connection pooling should be used to cut down on database latency.",
+          "Caching queries that are accessed often at the app layer improves performance.",
+          "An index on user_id will speed up lookups significantly."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Which cache backend: Redis or Memcached?"
+        ],
+        "next_actions": [
+          "Run PgBouncer benchmarks against production traffic."
+        ],
+        "summary": "Restating the same three strategies with slightly different wording."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "To reduce latency, pool database connections.",
+          "App-layer caching of hot queries is recommended.",
+          "Creating a user_id index speeds up query performance."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "Benchmark the connection pooler with realistic load."
+        ],
+        "summary": "Third restatement of the same optimization claims."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "novelty_rate_L0": 1.0,
+    "novelty_rate_L1_approximate": 0.0,
+    "readiness_classification": "HIGH",
+    "stop_recommendation": "SHIP",
+    "notes": "L0 sees all claims as new (different strings). L1 Jaccard should detect paraphrasing: 'Use connection pooling to reduce database latency' vs 'Connection pooling should be used to cut down on database latency' share most tokens. This is the key adversarial case L1 is designed to catch."
+  }
+}

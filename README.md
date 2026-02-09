@@ -26,18 +26,19 @@ This is **not "confidence."** It's a stop/ship signal: *are we still producing n
 
 ---
 
-## 📏 What it measures (v0.1)
+## 📏 What it measures (v0.2 draft implementation)
 
 A weighted score plus a stop recommendation from observable transcript signals. Currently implemented:
 
-- ✨ **Novelty rate**: are we still generating net-new claims? *(implemented — normalized-string set-diff)*
-- 🛠️ **Action readiness**: are there unresolved questions or executable next actions? *(implemented — heuristic from `open_questions` / `next_actions`)*
-- **K-consecutive stopping rule**: recommends stop after k=2 consecutive low-novelty rounds *(implemented)*
+- ✨ **Novelty rate (L0 + L1)**: net-new claims after normalization plus Jaccard fuzzy matching for paraphrase-lite repeats *(implemented, no embeddings)*.
+- 🛠️ **Action readiness**: weighted readiness from next-action specificity, open-question trend, and blocker detection *(implemented)*.
+- **Decision matrix stop signal**: `CONTINUE | SHIP | ESCALATE` from novelty + readiness *(implemented)*.
 
-Planned for v0.2 (not yet implemented):
+Planned next:
 
 - 🧠 **Semantic convergence**: are two agents saying the same thing? *(requires embeddings)*
 - 🧱 **Structural agreement**: are agents modifying each other or just rephrasing?
+- **Novelty L2 embeddings**: semantic novelty matching from [docs/novelty-and-readiness-spec.md](./docs/novelty-and-readiness-spec.md) *(documented TODO, not implemented)*.
 
 > Design note: a conversation can converge on the wrong answer. DR measures *diminishing returns*, not truth.
 
@@ -78,8 +79,15 @@ dr score trace.jsonl
   "components": {
     "semantic_similarity": null,
     "novelty_rate": 0.0,
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
     "structural_agreement": null,
-    "action_readiness": 1.0
+    "action_readiness": 0.85,
+    "action_readiness_detail": {
+      "next_actions_score": 0.7,
+      "open_questions_score": 1.0,
+      "blocker_score": 1.0
+    }
   },
   "novelty_by_round": [
     {"round": 1, "claims": 4, "new_claims": 4},
@@ -90,15 +98,13 @@ dr score trace.jsonl
     {"round": 6, "claims": 2, "new_claims": 0}
   ],
   "stop_recommendation": {
-    "recommended": true,
-    "reason": "k_consecutive_low_novelty",
-    "k_required": 2,
-    "max_consecutive_low_novelty_rounds": 2,
-    "blockers": [],
-    "warnings": ["low_claim_volume_recent_rounds"],
-    "confidence": 0.75
+    "signal": "SHIP",
+    "novelty_classification": "LOW",
+    "readiness_classification": "HIGH",
+    "k_consecutive_low_novelty": 2,
+    "rationale": "Novelty is LOW (k-consecutive low rounds: 2). Action readiness is HIGH."
   },
-  "hint": "Diminishing returns detected for consecutive rounds; move to implementation and verification."
+  "hint": "Converged. Ship the decision and verify."
 }
 ```
 
@@ -125,8 +131,8 @@ Three trust tiers: **local** (markdown, trusted agents), **federated** (signed, 
 
 This project is **pre-release** (v0.0.0). It works, but carries honest caveats:
 
-- **Two of four scoring components are implemented.** Novelty rate and action readiness are live. Semantic similarity and structural agreement return `null`.
-- **Normalized string matching only.** Claims are lowercased and whitespace-normalized, but "use PgBouncer" and "we should adopt PgBouncer for connection pooling" are still different claims. Semantic deduplication is planned for v0.2.
+- **L0 + L1 novelty and readiness are implemented.** `semantic_similarity` and `structural_agreement` still return `null`.
+- **No embedding-based semantic novelty (L2) yet.** This is intentionally deferred; see [docs/novelty-and-readiness-spec.md](./docs/novelty-and-readiness-spec.md).
 - **No external dependencies.** By design — but this means no embeddings, no NLP, no ML. The v0.1 scorer is deliberately simple.
 - **Tested on synthetic examples only.** The three included transcripts are clean-room demonstrations, not production data. Real-world calibration has not been done.
 - **Not on PyPI.** Install from source.
