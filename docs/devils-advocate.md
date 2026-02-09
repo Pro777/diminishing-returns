@@ -92,13 +92,13 @@ The purpose is not to undermine the project — it's to sharpen it. If DR is goi
 
 ---
 
-## 9. Tests Exist but CI Doesn't Run Them
+## 9. Expected Output Files Are Stale and Unvalidated
 
-**Critique:** Unit tests exist (`tests/test_score.py` — 7 test cases covering dedup, stopping logic, JSONL ordering, and error reporting). But the CI pipeline (`ci.yml`) still runs `python -c "print('ok')"` instead of `python -m pytest` or `python -m unittest`. The `*.expected.json` files exist but nothing validates that `dr score` produces them.
+**Critique:** Unit tests exist (`tests/test_score.py` — 8 test cases covering dedup, stopping logic, JSONL ordering, and error reporting) and CI now runs them. However, the `*.expected.json` files predate the hardening changes and no longer match `dr score` output. Nothing in CI validates that `dr score` produces output matching the checked-in expected files.
 
-**Why this matters:** Tests that don't run in CI are tests that will rot. A contributor who passes CI has no signal that their change broke scoring behavior.
+**Why this matters:** The expected output files are a form of documentation — they tell users "this is what you should see." If they're stale, a contributor who reads them will have wrong expectations. If they're never validated, they'll drift further with each change.
 
-**Suggestion:** Update `ci.yml` to run `python -m unittest discover -s tests`. Add a test that validates `dr score` output against the checked-in `*.expected.json` files (which are currently stale and need updating first).
+**Suggestion:** Update the `*.expected.json` files to match current `dr score` output. Add a test that runs `dr score` on each example transcript and asserts the output matches the corresponding expected file.
 
 ---
 
