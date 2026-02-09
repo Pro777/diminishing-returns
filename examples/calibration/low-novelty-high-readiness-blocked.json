@@ -1,0 +1,51 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-low-novelty-high-readiness-blocked",
+  "topic": "Converged with specific actions but blocked dependency should hard-override SHIP",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "Use blue-green deployment for safer rollouts.",
+          "Health checks should gate traffic cutover.",
+          "Use /healthz endpoint for ALB health checks."
+        ],
+        "decisions": [
+          "Adopt blue-green rollout flow in CI."
+        ],
+        "open_questions": [
+          "When will security approve production IAM role creation?"
+        ],
+        "next_actions": [
+          "Implement /healthz endpoint in src/api/health.py.",
+          "Update infra/deploy.yml to include blue-green steps."
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Use blue-green deployment for safer rollouts.",
+          "Health checks should gate traffic cutover.",
+          "Use /healthz endpoint for ALB health checks."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Blocked: waiting on security approval for production IAM role creation."
+        ],
+        "next_actions": [
+          "Update infra/deploy.yml to include blue-green steps.",
+          "Implement /healthz endpoint in src/api/health.py."
+        ]
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "readiness_classification": "MEDIUM",
+    "stop_recommendation": "ESCALATE",
+    "notes": "Without blocker override this would trend toward SHIP due to specific next actions and low novelty. Blocker language must prevent SHIP."
+  }
+}

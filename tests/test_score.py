@@ -12,6 +12,10 @@ from dr.io import load_transcript
 from dr.score import score_transcript
 
 
+ROOT = Path(__file__).resolve().parents[1]
+CALIBRATION_DIR = ROOT / "examples" / "calibration"
+
+
 class ScoreTranscriptTests(unittest.TestCase):
     def test_rejects_empty_rounds(self) -> None:
         with self.assertRaises(ValueError):
@@ -29,21 +33,68 @@ class ScoreTranscriptTests(unittest.TestCase):
             }
         )
         self.assertEqual(result["novelty_by_round"][0]["claims"], 1)
-        self.assertEqual(result["novelty_by_round"][0]["new_claims"], 1)
+        self.assertEqual(result["novelty_by_round"][0]["new_claims_L0"], 1)
 
-    def test_single_low_tail_round_does_not_auto_stop(self) -> None:
+    def test_single_low_round_reports_k_consecutive_depth(self) -> None:
         result = score_transcript(
             {
                 "version": "0.1",
                 "conversation_id": "tail-game",
                 "rounds": [
-                    {"round": 1, "outputs": {"claims": ["A", "B", "C"], "next_actions": ["x"]}},
-                    {"round": 2, "outputs": {"claims": ["D", "E", "F"], "next_actions": ["x"]}},
-                    {"round": 3, "outputs": {"claims": ["A", "B", "C"], "next_actions": ["x"]}},
+                    {"round": 1, "outputs": {"claims": ["A", "B", "C"], "next_actions": ["write plan"]}},
+                    {"round": 2, "outputs": {"claims": ["D", "E", "F"], "next_actions": ["write plan"]}},
+                    {"round": 3, "outputs": {"claims": ["A", "B", "C"], "next_actions": ["write plan"]}},
                 ],
             }
         )
-        self.assertFalse(result["stop_recommendation"]["recommended"])
+        self.assertEqual(result["stop_recommendation"]["k_consecutive_low_novelty"], 1)
+
+    def test_paraphrase_l1_catches_what_l0_misses(self) -> None:
+        transcript = load_transcript(CALIBRATION_DIR / "paraphrase-rounds.json")
+        result = score_transcript(transcript)
+
+        self.assertEqual(result["stop_recommendation"]["signal"], "SHIP")
+        self.assertEqual(result["stop_recommendation"]["novelty_classification"], "LOW")
+        self.assertGreater(result["components"]["novelty_rate_L0"], 0.9)
+        self.assertLess(result["components"]["novelty_rate_L1"], 0.15)
+
+
+class CalibrationExamplesTests(unittest.TestCase):
+    def _run_calibration_case(self, name: str) -> dict:
+        fixture_path = CALIBRATION_DIR / f"{name}.json"
+        fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+        transcript = {k: v for k, v in fixture.items() if k != "_expected"}
+        expected = fixture["_expected"]
+
+        result = score_transcript(transcript)
+        self.assertEqual(result["stop_recommendation"]["signal"], expected["stop_recommendation"])
+        self.assertIn(result["stop_recommendation"]["novelty_classification"], {"LOW", "MEDIUM", "HIGH"})
+        self.assertIn(result["stop_recommendation"]["readiness_classification"], {"LOW", "MEDIUM", "HIGH"})
+
+        return result
+
+    def test_low_novelty_high_readiness_ships(self) -> None:
+        result = self._run_calibration_case("low-novelty-high-readiness")
+        self.assertEqual(result["stop_recommendation"]["signal"], "SHIP")
+
+    def test_blocker_override_prevents_ship(self) -> None:
+        result = self._run_calibration_case("low-novelty-high-readiness-blocked")
+        self.assertNotEqual(result["stop_recommendation"]["signal"], "SHIP")
+        self.assertEqual(result["stop_recommendation"]["signal"], "ESCALATE")
+
+    def test_low_novelty_low_readiness_escalates(self) -> None:
+        result = self._run_calibration_case("low-novelty-low-readiness")
+        self.assertEqual(result["stop_recommendation"]["signal"], "ESCALATE")
+
+    def test_high_novelty_regimes_continue(self) -> None:
+        self.assertEqual(self._run_calibration_case("high-novelty-low-readiness")["stop_recommendation"]["signal"], "CONTINUE")
+        self.assertEqual(
+            self._run_calibration_case("high-novelty-high-readiness")["stop_recommendation"]["signal"], "CONTINUE"
+        )
+
+    def test_all_calibration_examples_match_expected(self) -> None:
+        for fixture in sorted(CALIBRATION_DIR.glob("*.json")):
+            self._run_calibration_case(fixture.stem)
 
 
 class JsonlLoadTests(unittest.TestCase):
@@ -105,7 +156,7 @@ class CliScoreTests(unittest.TestCase):
             env["PYTHONPATH"] = "src"
             proc = subprocess.run(
                 [sys.executable, "-c", "from dr.cli import main; main()", "score", str(path)],
-                cwd=Path(__file__).resolve().parents[1],
+                cwd=ROOT,
                 env=env,
                 capture_output=True,
                 text=True,
@@ -115,6 +166,7 @@ class CliScoreTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 2)
         self.assertIn("error:", proc.stderr)
         self.assertIn("bad.json:1", proc.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

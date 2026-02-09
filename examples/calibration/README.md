@@ -11,6 +11,7 @@ Each JSON file is a valid v0.1 transcript with an additional `_expected` section
 | `paraphrase-rounds.json` | Paraphrased claims (L0 misses, L1 catches) | SHIP |
 | `exact-repeat.json` | Exact-repeat rounds (baseline) | SHIP |
 | `low-novelty-high-readiness.json` | Converged with clear next actions | SHIP |
+| `low-novelty-high-readiness-blocked.json` | Converged with specific actions but blocked | ESCALATE |
 | `low-novelty-low-readiness.json` | Converged but stuck/blocked | ESCALATE |
 | `high-novelty-low-readiness.json` | Active exploration, not ready | CONTINUE |
 | `high-novelty-high-readiness.json` | Productive with specific actions | CONTINUE |

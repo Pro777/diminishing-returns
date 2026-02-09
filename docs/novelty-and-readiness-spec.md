@@ -183,6 +183,7 @@ else:
 ```
 
 This is intentionally binary. Blockers are decisive — a conversation with a known blocker is not ready to ship regardless of other signals.
+In the final decision step, blocker detection acts as a hard override: the recommendation must not be SHIP while blocked.
 
 ### 3.3 Composite action readiness
 
