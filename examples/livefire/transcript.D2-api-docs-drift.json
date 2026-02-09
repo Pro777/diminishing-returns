@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-D2-api-docs-drift",
+  "topic": "API docs vs implementation drift: OpenAPI spec audit",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The /users endpoint spec says it returns 'username' but the code returns 'user_name'.",
+          "The /orders endpoint spec lists 'status' as an enum of 3 values but the code has 5.",
+          "The error response schema documents a 'message' field but the code returns 'error' and 'detail'.",
+          "Three endpoints are in the code but missing from the spec entirely: /health, /metrics, /version."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "For the /users field name mismatch, should we fix the code or the spec?",
+          "Are the 2 extra /orders status values intentional additions or bugs?",
+          "Should /health, /metrics, /version be documented or are they internal-only?"
+        ],
+        "next_actions": [
+          "Check git blame for the /users field rename.",
+          "Ask the team about the status enum additions.",
+          "Clarify endpoint visibility policy."
+        ],
+        "citations": [],
+        "summary": "Four categories of drift found. Each needs a resolution direction before fixes can be written."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The /users endpoint spec says it returns 'username' but the code returns 'user_name'.",
+          "The /orders endpoint spec lists 'status' as an enum of 3 values but the code has 5.",
+          "The error response schema documents a 'message' field but the code returns 'error' and 'detail'.",
+          "Three endpoints are in the code but missing from the spec entirely: /health, /metrics, /version.",
+          "Git blame shows 'user_name' was a deliberate rename in PR #142 — the spec should be updated to match.",
+          "The 2 extra status values were added in PR #156 with tests — they are intentional; spec needs updating.",
+          "Ops team confirms /health and /metrics should be documented; /version is internal-only."
+        ],
+        "decisions": [
+          "Fix the spec to match code for: /users field name, /orders status enum.",
+          "Fix the error response spec to document 'error' and 'detail' fields.",
+          "Add /health and /metrics to the spec. Keep /version undocumented."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Update the OpenAPI spec for all 4 drift categories.",
+          "Open a PR with the spec fixes."
+        ],
+        "citations": [],
+        "summary": "All drift items resolved. Spec-follows-code for field names and enums. Two internal endpoints to document. Ready to write fixes."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "Git blame shows 'user_name' was a deliberate rename in PR #142 — the spec should be updated to match.",
+          "The 2 extra status values were added in PR #156 with tests — they are intentional; spec needs updating.",
+          "Ops team confirms /health and /metrics should be documented; /version is internal-only."
+        ],
+        "decisions": [
+          "All drift items have a resolution. Update the spec."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Write the spec update PR."
+        ],
+        "citations": [],
+        "summary": "Stable. All items resolved. Execute the spec update."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 2,
+    "rationale": "Round 2 resolves all open questions with concrete data (git blame, team confirmation). Round 3 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "SHIP",
+    "reason": "All drift items cataloged and resolved with evidence. Resolution direction is clear for each. PR-ready.",
+    "converge_round": 2
+  }
+}

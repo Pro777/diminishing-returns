@@ -1,0 +1,103 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-D1-stale-readme",
+  "topic": "Stale README audit: cross-checking docs against actual CLI behavior",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The README documents a --verbose flag that was removed in v2.3.",
+          "The installation section references Python 3.8+ but setup.py requires 3.10+.",
+          "The quick-start example uses an old command name 'analyze' that was renamed to 'score'.",
+          "The output format example shows a flat JSON object but the actual output is nested."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Are there other renamed commands beyond 'analyze' -> 'score'?",
+          "Should the README target the latest release or the development branch?"
+        ],
+        "next_actions": [
+          "Enumerate all CLI commands and cross-check against docs.",
+          "Update the Python version requirement."
+        ],
+        "citations": [],
+        "summary": "Four discrepancies found in initial pass. More may exist in CLI command coverage."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The README documents a --verbose flag that was removed in v2.3.",
+          "The installation section references Python 3.8+ but setup.py requires 3.10+.",
+          "The quick-start example uses an old command name 'analyze' that was renamed to 'score'.",
+          "The output format example shows a flat JSON object but the actual output is nested.",
+          "No other renamed commands exist; 'analyze' -> 'score' was the only rename.",
+          "The README should target the latest release (not dev branch) per project convention."
+        ],
+        "decisions": [
+          "Target the latest release tag for README accuracy.",
+          "Fix all four discrepancies identified in round 1."
+        ],
+        "open_questions": [
+          "Should we add a 'doc freshness' CI check to prevent future drift?"
+        ],
+        "next_actions": [
+          "Draft the corrected README sections.",
+          "Open a follow-up issue for doc freshness CI."
+        ],
+        "citations": [],
+        "summary": "Command audit complete — no additional renames. All discrepancies cataloged. One process question remains (CI check)."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The README documents a --verbose flag that was removed in v2.3.",
+          "The quick-start example uses an old command name 'analyze' that was renamed to 'score'.",
+          "No other renamed commands exist; 'analyze' -> 'score' was the only rename.",
+          "The README should target the latest release (not dev branch) per project convention."
+        ],
+        "decisions": [
+          "Fix all four discrepancies in a single PR.",
+          "Open a separate issue for doc freshness CI (out of scope for this fix)."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Write the corrected README and open the PR."
+        ],
+        "citations": [],
+        "summary": "All discrepancies and decisions stable. CI check deferred to a follow-up. Ready to write the fix."
+      }
+    },
+    {
+      "round": 4,
+      "outputs": {
+        "claims": [
+          "No other renamed commands exist; 'analyze' -> 'score' was the only rename.",
+          "The README should target the latest release (not dev branch) per project convention."
+        ],
+        "decisions": [
+          "Fix all four discrepancies in a single PR."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Open the PR."
+        ],
+        "citations": [],
+        "summary": "No new discrepancies. Restating the plan. Execute."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 3,
+    "rationale": "Round 3 closes all open questions and scopes the PR. Round 4 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "SHIP",
+    "reason": "All discrepancies cataloged, resolutions decided, open questions resolved. PR-ready.",
+    "converge_round": 3
+  }
+}

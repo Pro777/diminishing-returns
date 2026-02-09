@@ -1,0 +1,85 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-I2-email-archive",
+  "topic": "Email archive vs keep: establish rules for 5 thread categories",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "Automated CI notifications should be archived after 48 hours — they are ephemeral and searchable if needed.",
+          "Customer escalation threads should be kept until the issue is resolved.",
+          "Weekly status report threads can be archived after the next report arrives.",
+          "Vendor contract threads should be kept for the duration of the contract term.",
+          "Internal social threads (birthdays, team events) can be archived immediately after the event."
+        ],
+        "decisions": [
+          "Adopt time-based archiving for ephemeral categories (CI, status reports, social).",
+          "Adopt state-based retention for action-dependent categories (escalations, contracts)."
+        ],
+        "open_questions": [
+          "Should we auto-archive or require manual action?",
+          "What about threads that span multiple categories?"
+        ],
+        "next_actions": [
+          "Draft the archive rules as a filter config.",
+          "Decide on auto vs manual archiving."
+        ],
+        "citations": [],
+        "summary": "Five categories classified. Two rule types: time-based and state-based. Two process questions remain."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Automated CI notifications should be archived after 48 hours — they are ephemeral and searchable if needed.",
+          "Customer escalation threads should be kept until the issue is resolved.",
+          "Weekly status report threads can be archived after the next report arrives.",
+          "Vendor contract threads should be kept for the duration of the contract term.",
+          "Internal social threads (birthdays, team events) can be archived immediately after the event.",
+          "Auto-archive is preferred for time-based rules; manual is required for state-based rules (only the owner knows when resolved).",
+          "Mixed-category threads should follow the most conservative retention rule."
+        ],
+        "decisions": [
+          "Use auto-archive for CI, status reports, and social threads.",
+          "Use manual archive for escalations and contracts.",
+          "Mixed threads inherit the longest retention rule."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Configure email filters for the three auto-archive categories."
+        ],
+        "citations": [],
+        "summary": "All categories and edge cases covered. Rules are complete and consistent."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "Auto-archive is preferred for time-based rules; manual is required for state-based rules (only the owner knows when resolved).",
+          "Mixed-category threads should follow the most conservative retention rule."
+        ],
+        "decisions": [
+          "Archive rules are complete."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Configure the filters."
+        ],
+        "citations": [],
+        "summary": "No new rules or exceptions. The classification is stable."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 2,
+    "rationale": "Round 2 resolves all questions and produces a complete rule set. Round 3 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "STOP",
+    "reason": "Informational decision — no code to ship. Rules are stable and complete. STOP rather than SHIP because the output is a policy, not an executable action.",
+    "converge_round": 2
+  }
+}
