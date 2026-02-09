@@ -1,0 +1,77 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-high-novelty-low-readiness",
+  "topic": "Active exploration phase: lots of new ideas, no actionable plan yet (should CONTINUE)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The search feature is too slow for production use.",
+          "Elasticsearch might solve the latency problem.",
+          "Full-text search on PostgreSQL could work for smaller datasets."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "What is the expected dataset size in 12 months?",
+          "Do we need faceted search or just full-text?"
+        ],
+        "next_actions": [
+          "Look into search infrastructure options."
+        ],
+        "summary": "Problem identified, exploring solution space."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Typesense is a lighter alternative to Elasticsearch.",
+          "Meilisearch offers good developer experience for small teams.",
+          "The current PostgreSQL LIKE queries are O(n) without an index.",
+          "A trigram index (pg_trgm) could improve PostgreSQL search without adding infrastructure."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "What is the expected dataset size in 12 months?",
+          "Do we need faceted search or just full-text?",
+          "What is our ops capacity for running a separate search cluster?",
+          "Should we prototype with pg_trgm first?"
+        ],
+        "next_actions": [
+          "Consider building a prototype."
+        ],
+        "summary": "More options identified. Questions expanding. Still diverging."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "Hybrid approach: pg_trgm for MVP, Typesense when dataset exceeds 1M rows.",
+          "Query latency target should be under 200ms at p95.",
+          "Search relevance tuning requires a labeled test set of queries.",
+          "The ops team is already running Redis; adding Typesense is incremental."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Do we have a labeled query test set?",
+          "Who will own the search relevance tuning?",
+          "What is the budget for Typesense Cloud vs self-hosted?"
+        ],
+        "next_actions": [
+          "Explore Typesense pricing for our projected volume."
+        ],
+        "summary": "New claims: hybrid approach, latency targets, relevance testing. Still diverging."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "HIGH",
+    "novelty_rate_L0": 1.0,
+    "novelty_rate_L1_approximate": 0.85,
+    "readiness_classification": "LOW",
+    "stop_recommendation": "CONTINUE",
+    "notes": "Every round introduces genuinely new claims (not paraphrases). Open questions are shifting but not resolving. Next actions remain vague ('look into', 'consider', 'explore'). This conversation is in a productive divergence phase — stopping now would be premature."
+  }
+}

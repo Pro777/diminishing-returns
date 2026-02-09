@@ -1,0 +1,78 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-low-novelty-low-readiness",
+  "topic": "Converged but stuck: no new ideas AND no clear path forward (should ESCALATE)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The microservices architecture adds operational complexity.",
+          "Service mesh would help with observability.",
+          "Team lacks experience with distributed tracing."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Should we adopt Istio or Linkerd?",
+          "Do we have budget for a dedicated SRE hire?",
+          "Is the team ready for this complexity?"
+        ],
+        "next_actions": [
+          "Investigate service mesh options."
+        ],
+        "summary": "Identified complexity problem but no clear direction."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The microservices architecture adds operational complexity.",
+          "Service mesh would help with observability.",
+          "Team lacks experience with distributed tracing."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Should we adopt Istio or Linkerd?",
+          "Do we have budget for a dedicated SRE hire?",
+          "Is the team ready for this complexity?",
+          "Who owns the service mesh rollout?"
+        ],
+        "next_actions": [
+          "Investigate service mesh options."
+        ],
+        "summary": "Same claims restated. Questions growing. No resolution."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The microservices architecture adds operational complexity.",
+          "Service mesh would help with observability.",
+          "Team lacks experience with distributed tracing."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Should we adopt Istio or Linkerd?",
+          "Do we have budget for a dedicated SRE hire?",
+          "Is the team ready for this complexity?",
+          "Who owns the service mesh rollout?",
+          "What is our timeline for the migration?"
+        ],
+        "next_actions": [
+          "Think about which service mesh to explore."
+        ],
+        "summary": "Third round with identical claims. Questions accumulating. No progress."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
+    "readiness_classification": "LOW",
+    "stop_recommendation": "ESCALATE",
+    "notes": "Key ESCALATE scenario. Novelty is zero (exact repeats). Readiness is low because: (1) next_actions are vague ('think about', 'investigate'), (2) open_questions are accumulating (3 -> 4 -> 5), (3) no decisions being made. The conversation cannot produce a useful outcome — needs a human decision-maker, a smaller scope, or a different approach."
+  }
+}

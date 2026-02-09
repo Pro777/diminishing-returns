@@ -1,0 +1,75 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-question-accumulation",
+  "topic": "Questions growing each round with moderate novelty (should CONTINUE)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The data pipeline should support both batch and streaming ingestion.",
+          "Apache Kafka is the standard choice for streaming."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "What is the expected message throughput?"
+        ],
+        "next_actions": [
+          "Estimate peak message volume from product requirements."
+        ],
+        "summary": "Initial framing of the data pipeline problem."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The data pipeline should support both batch and streaming ingestion.",
+          "Apache Kafka is the standard choice for streaming.",
+          "Schema evolution is critical for long-lived pipelines."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "What is the expected message throughput?",
+          "Should we use Avro or Protobuf for serialization?",
+          "Do we need exactly-once delivery guarantees?"
+        ],
+        "next_actions": [
+          "Explore serialization format trade-offs."
+        ],
+        "summary": "One new claim. Questions are growing faster than answers."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The data pipeline should support both batch and streaming ingestion.",
+          "Apache Kafka is the standard choice for streaming.",
+          "Schema evolution is critical for long-lived pipelines.",
+          "Confluent Schema Registry integrates well with Kafka."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "What is the expected message throughput?",
+          "Should we use Avro or Protobuf for serialization?",
+          "Do we need exactly-once delivery guarantees?",
+          "Is Confluent Cloud within our budget?",
+          "Who will be the on-call for the streaming platform?"
+        ],
+        "next_actions": [
+          "Consider which serialization format to use."
+        ],
+        "summary": "One new claim per round but questions keep growing. Not converging."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "MEDIUM",
+    "novelty_rate_L0": 0.25,
+    "novelty_rate_L1_approximate": 0.25,
+    "readiness_classification": "LOW",
+    "stop_recommendation": "CONTINUE",
+    "notes": "Novelty is MEDIUM: one new claim per round out of a peak of 2. Readiness is LOW because: (1) open_questions are accumulating (1 -> 3 -> 5), giving oq_score = 0.1, (2) next_actions are vague ('explore', 'consider'). The conversation is not stuck (still producing new claims) but is not converging either. CONTINUE is correct — the questions need answers, not more rounds of the same discussion."
+  }
+}

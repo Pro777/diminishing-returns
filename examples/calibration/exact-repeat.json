@@ -1,0 +1,68 @@
+{
+  "version": "0.1",
+  "conversation_id": "calibration-exact-repeat",
+  "topic": "Exact-repeat rounds (baseline: both L0 and L1 detect zero novelty)",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The API should use JWT tokens for authentication.",
+          "Rate limiting should be enforced at the gateway level.",
+          "All endpoints must require HTTPS."
+        ],
+        "decisions": [
+          "Use RS256 for JWT signing."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Generate RSA key pair for JWT signing.",
+          "Configure rate limits: 100 req/min per client."
+        ],
+        "summary": "Authentication and security baseline established."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The API should use JWT tokens for authentication.",
+          "Rate limiting should be enforced at the gateway level.",
+          "All endpoints must require HTTPS."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "Generate RSA key pair for JWT signing.",
+          "Configure rate limits: 100 req/min per client."
+        ],
+        "summary": "Exact repeat of round 1."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The API should use JWT tokens for authentication.",
+          "Rate limiting should be enforced at the gateway level.",
+          "All endpoints must require HTTPS."
+        ],
+        "decisions": [],
+        "open_questions": [],
+        "next_actions": [
+          "Generate RSA key pair for JWT signing.",
+          "Configure rate limits: 100 req/min per client."
+        ],
+        "summary": "Third exact repeat."
+      }
+    }
+  ],
+  "_expected": {
+    "novelty_classification": "LOW",
+    "novelty_rate_L0": 0.0,
+    "novelty_rate_L1": 0.0,
+    "readiness_classification": "HIGH",
+    "stop_recommendation": "SHIP",
+    "notes": "Simplest possible case. All claims are exact repeats. Next actions are specific (imperative verbs, concrete artifacts). No open questions, no blockers. Should SHIP immediately after k=2 consecutive low-novelty rounds."
+  }
+}
