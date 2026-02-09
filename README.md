@@ -59,16 +59,18 @@ A diminishing-returns meter nudges you toward the next correct move:
 git clone https://github.com/Pro777/diminishing-returns.git
 cd diminishing-returns
 
-# Option A (recommended): install editable so `dr` is on PATH
+# Recommended (try it without installing anything)
+bin/dr-score-file transcript.json
+bin/dr-score-file trace.jsonl
+
+# Recommended (developer install): use a virtualenv so `dr` is on PATH
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e .
 
 dr score transcript.json
 
 dr score trace.jsonl
-
-# Option B: no install needed (dev convenience wrapper)
-bin/dr-score-file transcript.json
-bin/dr-score-file trace.jsonl
 ```
 
 > **Note:** `pip install diminishing-returns` does not work yet. The package is pre-release (v0.0.0) and has not been published to PyPI. Install from source as shown above.
