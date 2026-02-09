@@ -17,7 +17,7 @@
     </filter>
   </defs>
 
-  <!-- Background (warmer dark slate, matching ChatGPT image) -->
+  <!-- Background (warmer dark slate) -->
   <rect width="800" height="220" fill="#1a2332"/>
   <rect width="800" height="220" fill="url(#dots)"/>
 

@@ -55,8 +55,8 @@ Every DR attestation is a JSON object with a stable schema.
 | Field | Type | Description |
 |-------|------|-------------|
 | `agent_id` | string | Identifier for the producing agent. Freeform at local tier; URI or DID at higher tiers. |
-| `system` | string | The system/model that produced the work (e.g., `"claude-code/opus-4.6"`). |
-| `trust_domain` | string | The trust boundary this agent belongs to (e.g., `"clawd.local"`, `"spitfirecowboy.com"`). |
+| `system` | string | The system/model that produced the work (e.g., `"agent-framework/v1.0"`). |
+| `trust_domain` | string | The trust boundary this agent belongs to (e.g., `"agents.local"`, `"example.com"`). |
 
 ### Method Labels
 
@@ -129,7 +129,7 @@ An evidence bundle is a standard DR transcript (per `transcript.v0.1.schema.json
   "attestation_id": "dr:550e8400-...",
   "rounds": [ ... ],
   "participants": [
-    {"agent_id": "proposer@clawd.local", "role": "proposer"},
+    {"agent_id": "proposer@agents.local", "role": "proposer"},
     {"agent_id": "subagent-1", "role": "reviewer"},
     {"agent_id": "subagent-2", "role": "reviewer"}
   ]
@@ -246,16 +246,16 @@ Use PgBouncer for connection pooling...
   "id": "dr:550e8400-e29b-41d4-a716-446655440000",
   "timestamp": "2026-02-08T14:30:00Z",
   "origin": {
-    "agent_id": "proposer@clawd.local",
-    "system": "claude-code/opus-4.6",
-    "trust_domain": "clawd.spitfirecowboy.com"
+    "agent_id": "proposer@agents.local",
+    "system": "agent-framework/v1.0",
+    "trust_domain": "agents.example.com"
   },
   "claim": "Use PgBouncer for connection pooling in the Rails app",
   "score": 0.85,
   "rounds": 3,
   "method": "2-subagent + DA",
   "refs": [],
-  "evidence_uri": "https://clawd.spitfirecowboy.com/evidence/550e8400.json",
+  "evidence_uri": "https://agents.example.com/evidence/550e8400.json",
   "evidence_hash": "sha256:abc123...",
   "signature": "sigstore:..."
 }
