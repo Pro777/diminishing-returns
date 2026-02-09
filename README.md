@@ -75,6 +75,15 @@ bin/dr-score-file trace.jsonl
 
 ## 🧾 Output
 
+`dr score` prints a single JSON object with **exactly six top-level keys**:
+
+1. `score`
+2. `components`
+3. `novelty_by_round`
+4. `readiness_by_round`
+5. `stop_recommendation`
+6. `hint`
+
 ```json
 {
   "score": 1.0,
@@ -92,12 +101,26 @@ bin/dr-score-file trace.jsonl
     }
   },
   "novelty_by_round": [
-    {"round": 1, "claims": 4, "new_claims": 4},
-    {"round": 2, "claims": 3, "new_claims": 1},
-    {"round": 3, "claims": 3, "new_claims": 1},
-    {"round": 4, "claims": 3, "new_claims": 1},
-    {"round": 5, "claims": 1, "new_claims": 0},
-    {"round": 6, "claims": 2, "new_claims": 0}
+    {
+      "round": 1,
+      "claims": 4,
+      "new_claims": 4,
+      "new_claims_L0": 4,
+      "new_claims_L1": 4,
+      "novelty_rate": 1.0,
+      "novelty_rate_L0": 1.0,
+      "novelty_rate_L1": 1.0
+    }
+  ],
+  "readiness_by_round": [
+    {
+      "round": 1,
+      "action_readiness": 0.85,
+      "readiness_classification": "HIGH",
+      "next_actions_score": 0.7,
+      "open_questions_score": 1.0,
+      "blocker_score": 1.0
+    }
   ],
   "stop_recommendation": {
     "signal": "SHIP",
@@ -110,6 +133,7 @@ bin/dr-score-file trace.jsonl
 }
 ```
 
+Note: `novelty_by_round` and `readiness_by_round` are arrays with one entry per transcript round; the example above is abbreviated.
 ## 🧪 Examples
 
 - [`examples/transcript.meeting-stop.json`](./examples/transcript.meeting-stop.json) — **When to stop a meeting** (universal metaphor)
