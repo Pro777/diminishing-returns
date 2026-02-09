@@ -1,0 +1,108 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-S2-hotfix-vs-release",
+  "topic": "Hotfix vs scheduled release: severity-2 bug found Friday afternoon",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "The bug causes incorrect invoice totals for orders with discount codes — financial impact.",
+          "The fix is a one-line change in the discount calculation module.",
+          "The full test suite takes 45 minutes; a targeted test run on the billing module takes 8 minutes.",
+          "Monday's release train includes 12 other PRs and is already staged.",
+          "Weekend traffic is 30% of weekday volume, so exposure is lower but nonzero."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "How many orders with discount codes are expected this weekend?",
+          "Can we run only the billing module tests to validate the hotfix?",
+          "Is there a feature flag to disable discount codes as a temporary mitigation?"
+        ],
+        "next_actions": [
+          "Estimate weekend discount-code order volume.",
+          "Check if a feature flag exists for discount codes."
+        ],
+        "citations": [],
+        "summary": "Financial-impact bug with a simple fix. Tension between hotfix risk (partial testing) and exposure risk (2 days of bad invoices)."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "The bug causes incorrect invoice totals for orders with discount codes — financial impact.",
+          "The fix is a one-line change in the discount calculation module.",
+          "The full test suite takes 45 minutes; a targeted test run on the billing module takes 8 minutes.",
+          "Approximately 200 orders with discount codes are expected this weekend.",
+          "A feature flag exists to disable discount codes but would block legitimate promotions.",
+          "The billing module has 94% test coverage; targeted tests are sufficient for a one-line change."
+        ],
+        "decisions": [
+          "Deploy the hotfix today with targeted billing module tests.",
+          "Do not use the feature flag — it would block a running promotion."
+        ],
+        "open_questions": [
+          "Who is available to monitor the deploy?"
+        ],
+        "next_actions": [
+          "Write the fix and run billing module tests.",
+          "Identify the on-call engineer for deploy monitoring.",
+          "Prepare a rollback plan (revert the one commit)."
+        ],
+        "citations": [],
+        "summary": "Hotfix is the right call: simple fix, good test coverage, 200 orders at risk. Feature flag rejected (blocks promotions). One logistics question remains."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "The fix is a one-line change in the discount calculation module.",
+          "The billing module has 94% test coverage; targeted tests are sufficient for a one-line change.",
+          "Approximately 200 orders with discount codes are expected this weekend.",
+          "On-call engineer confirmed available for deploy monitoring."
+        ],
+        "decisions": [
+          "Deploy the hotfix today with targeted billing module tests.",
+          "On-call engineer will monitor for 1 hour post-deploy.",
+          "Rollback plan: revert the single commit if error rate spikes."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Merge the fix, run billing tests, deploy to production.",
+          "Notify the team in Slack."
+        ],
+        "citations": [],
+        "summary": "All questions resolved. Hotfix plan is complete with monitoring and rollback. Execute."
+      }
+    },
+    {
+      "round": 4,
+      "outputs": {
+        "claims": [
+          "The billing module has 94% test coverage; targeted tests are sufficient for a one-line change.",
+          "On-call engineer confirmed available for deploy monitoring."
+        ],
+        "decisions": [
+          "Deploy the hotfix today."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Ship it."
+        ],
+        "citations": [],
+        "summary": "No new information. Plan is locked. Deploy."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 3,
+    "rationale": "Round 3 completes the plan with monitoring and rollback. Round 4 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "SHIP",
+    "reason": "Decision made with full risk mitigation (targeted tests, monitoring, rollback plan). All open questions resolved. Action-ready.",
+    "converge_round": 3
+  }
+}

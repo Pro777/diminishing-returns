@@ -1,0 +1,108 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-P1-feature-completeness",
+  "topic": "Feature completeness threshold: ship with 8/10 criteria or wait for 10/10",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "8 of 10 acceptance criteria are met; the missing two are (a) keyboard shortcuts and (b) CSV export.",
+          "Keyboard shortcuts are a nice-to-have; no user has requested them in beta feedback.",
+          "CSV export was requested by 3 enterprise beta users and is in the sales deck.",
+          "The release deadline is next Wednesday; completing both criteria would push to the following week.",
+          "Shipping without CSV export risks disappointing the 3 enterprise prospects."
+        ],
+        "decisions": [],
+        "open_questions": [
+          "Can CSV export be shipped as a fast-follow within 3 days of launch?",
+          "Are the 3 enterprise prospects in active deal cycles or early pipeline?",
+          "Is there a workaround (e.g., copy-paste from the table) that covers the gap?"
+        ],
+        "next_actions": [
+          "Estimate effort for CSV export as a standalone PR.",
+          "Check enterprise deal stage with sales."
+        ],
+        "citations": [],
+        "summary": "Keyboard shortcuts can be deferred. CSV export is the real question — it has sales implications. Need deal-stage data."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "8 of 10 acceptance criteria are met; the missing two are (a) keyboard shortcuts and (b) CSV export.",
+          "CSV export was requested by 3 enterprise beta users and is in the sales deck.",
+          "CSV export is a 2-day effort; shipping it as a fast-follow means it lands 2 days after launch.",
+          "Two of the 3 enterprise prospects are in late-stage deal cycles (contracts expected within 2 weeks).",
+          "A copy-paste workaround exists but is not viable for large datasets (>1000 rows)."
+        ],
+        "decisions": [
+          "Ship on Wednesday without CSV export.",
+          "Ship CSV export as a fast-follow by Friday.",
+          "Defer keyboard shortcuts to the next release cycle."
+        ],
+        "open_questions": [
+          "Should we notify the 2 late-stage prospects about the fast-follow timeline?"
+        ],
+        "next_actions": [
+          "Create a follow-up ticket for CSV export (due Friday).",
+          "Draft a message to enterprise prospects about the timeline.",
+          "Prepare the Wednesday release."
+        ],
+        "citations": [],
+        "summary": "Ship Wednesday with 8/10, fast-follow CSV by Friday. Keyboard shortcuts deferred. One communication question remains."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "CSV export is a 2-day effort; shipping it as a fast-follow means it lands 2 days after launch.",
+          "Two of the 3 enterprise prospects are in late-stage deal cycles (contracts expected within 2 weeks).",
+          "Proactively notifying prospects about the fast-follow timeline is better than letting them discover the gap."
+        ],
+        "decisions": [
+          "Ship on Wednesday without CSV export.",
+          "Ship CSV export as a fast-follow by Friday.",
+          "Notify the 2 late-stage prospects with a timeline."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Create CSV export follow-up ticket.",
+          "Send prospect notification.",
+          "Cut the release."
+        ],
+        "citations": [],
+        "summary": "Plan is complete. Ship Wednesday, CSV by Friday, notify prospects. All questions resolved."
+      }
+    },
+    {
+      "round": 4,
+      "outputs": {
+        "claims": [
+          "Proactively notifying prospects about the fast-follow timeline is better than letting them discover the gap.",
+          "CSV export is a 2-day effort; shipping it as a fast-follow means it lands 2 days after launch."
+        ],
+        "decisions": [
+          "Ship Wednesday. CSV fast-follow Friday."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Execute the plan."
+        ],
+        "citations": [],
+        "summary": "Restating the decision. Execute."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 3,
+    "rationale": "Round 3 closes the last open question (prospect notification) and the plan is fully executable. Round 4 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "SHIP",
+    "reason": "Decision made with concrete fast-follow plan, risk mitigation (prospect notification), and clear next actions. Classic ship-vs-polish convergence.",
+    "converge_round": 3
+  }
+}

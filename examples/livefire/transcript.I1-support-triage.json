@@ -1,0 +1,88 @@
+{
+  "version": "0.1",
+  "conversation_id": "livefire-I1-support-triage",
+  "topic": "Triage a support queue: classify 6 tickets by severity and assign owners",
+  "rounds": [
+    {
+      "round": 1,
+      "outputs": {
+        "claims": [
+          "Ticket #101 (data loss report) is P0 — customer cannot access saved work.",
+          "Ticket #102 (UI alignment issue) is P3 — cosmetic, no functional impact.",
+          "Ticket #103 (slow dashboard load) is P2 — performance degradation affecting multiple users.",
+          "Ticket #104 (typo in error message) is P3 — cosmetic.",
+          "Ticket #105 (login fails on Safari) is P1 — blocking a segment of users.",
+          "Ticket #106 (feature request: dark mode) is P4 — enhancement, not a bug."
+        ],
+        "decisions": [
+          "Assign #101 to on-call engineer immediately."
+        ],
+        "open_questions": [
+          "Is #103 related to the database migration from last week?",
+          "How many users are affected by #105 (Safari login)?"
+        ],
+        "next_actions": [
+          "Page on-call for #101.",
+          "Check APM dashboards for #103 correlation.",
+          "Pull Safari usage stats for #105."
+        ],
+        "citations": [],
+        "summary": "Initial triage: 1 P0, 1 P1, 1 P2, 2 P3, 1 P4. Two questions need data before final assignment."
+      }
+    },
+    {
+      "round": 2,
+      "outputs": {
+        "claims": [
+          "Ticket #101 (data loss report) is P0 — customer cannot access saved work.",
+          "Ticket #103 (slow dashboard load) is P2 — performance degradation affecting multiple users.",
+          "Ticket #105 (login fails on Safari) is P1 — blocking a segment of users.",
+          "#103 correlates with the database migration — the new index is not covering a key query.",
+          "Safari represents 12% of active users, confirming #105 as P1."
+        ],
+        "decisions": [
+          "Assign #101 to on-call engineer immediately.",
+          "Assign #103 to the database team (migration follow-up).",
+          "Assign #105 to the frontend team (browser compat).",
+          "Assign #102 and #104 to the next sprint backlog.",
+          "Assign #106 to the product backlog."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Notify assigned teams.",
+          "Update ticket statuses in the tracker."
+        ],
+        "citations": [],
+        "summary": "All tickets classified and assigned. Open questions resolved with data. Queue is clear."
+      }
+    },
+    {
+      "round": 3,
+      "outputs": {
+        "claims": [
+          "Ticket #101 (data loss report) is P0 — customer cannot access saved work.",
+          "#103 correlates with the database migration — the new index is not covering a key query.",
+          "Safari represents 12% of active users, confirming #105 as P1."
+        ],
+        "decisions": [
+          "All tickets classified and assigned."
+        ],
+        "open_questions": [],
+        "next_actions": [
+          "Notify teams and update tracker."
+        ],
+        "citations": [],
+        "summary": "Restating completed triage. No reclassifications. Execute notifications."
+      }
+    }
+  ],
+  "diminishing_returns_note": {
+    "recommended_stop_round": 2,
+    "rationale": "Round 2 resolves all open questions and completes assignments. Round 3 is restatement."
+  },
+  "_expected": {
+    "stop_signal": "SHIP",
+    "reason": "All tickets classified, all assignments made, zero open questions. Fast convergence due to data-driven resolution.",
+    "converge_round": 2
+  }
+}
