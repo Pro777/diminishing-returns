@@ -70,7 +70,7 @@ Making DR discoverable and easy to integrate.
 | Real-world PR review example (not philosophy) | Planned |
 | GitHub Action (`dr score` comments on PRs) | Planned |
 | PyPI package (`pip install diminishing-returns`) | Planned |
-| Automated test suite (validate examples against expected output) | Planned |
+| Automated test suite (unit tests exist; CI doesn't run them yet) | Partial |
 | Blog post / landing page for discoverability | Planned |
 | MCP server (agents can call `dr score` as a tool) | Planned |
 | PR template with optional DR attestation field | Planned |
@@ -90,8 +90,10 @@ Making DR discoverable and easy to integrate.
 - [x] Write attestation spec (draft)
 - [x] Three clean-room example transcripts
 - [x] Devil's advocate critique ([`docs/devils-advocate.md`](./devils-advocate.md))
-- [ ] Automated tests: `dr score` output matches `*.expected.json`
+- [x] Unit tests (`tests/test_score.py` — dedup, stopping, JSONL ordering, error reporting)
+- [ ] CI runs tests (currently just `print('ok')`)
 - [ ] Update `*.expected.json` to match post-hardening output format
+- [ ] CI validates `dr score` output against `*.expected.json`
 - [ ] PyPI-ready packaging (but don't publish yet — validate first)
 
 ### Next (v0.2)

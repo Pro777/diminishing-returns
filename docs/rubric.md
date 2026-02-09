@@ -13,7 +13,7 @@ It tries to answer:
 
 **Why:** in real loops (research, critique/revise, debate), novelty typically decays: early rounds add many new claims; later rounds add fewer.
 
-**v0.1 implementation:** normalized-string set difference over structured `claims`, with per-round dedupe. Claims are lowercased and whitespace-collapsed before comparison.
+**v0.1 implementation:** normalized-string set difference over structured `claims`, with per-round dedupe. Claims are lowercased and whitespace-collapsed before comparison. The `novelty_rate` is averaged over a 2-round tail window (not just the final round), then divided by peak novelty. The `score` is `1.0 - novelty_rate`.
 
 **Known limitations (v0.1):**
 - Paraphrased claims are counted as novel. "Use PgBouncer" and "We should adopt PgBouncer for connection pooling" are treated as completely different claims despite expressing the same idea.
