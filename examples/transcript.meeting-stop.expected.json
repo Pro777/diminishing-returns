@@ -1,11 +1,11 @@
 {
   "components": {
-    "action_readiness": null,
+    "action_readiness": 1.0,
     "novelty_rate": 0.0,
     "semantic_similarity": null,
     "structural_agreement": null
   },
-  "hint": "Mostly converged; move to implementation and verification.",
+  "hint": "Diminishing returns detected for consecutive rounds; move to implementation and verification.",
   "novelty_by_round": [
     {
       "claims": 4,
@@ -38,5 +38,16 @@
       "round": 6
     }
   ],
-  "score": 1.0
+  "score": 1.0,
+  "stop_recommendation": {
+    "blockers": [],
+    "confidence": 0.75,
+    "k_required": 2,
+    "max_consecutive_low_novelty_rounds": 2,
+    "reason": "k_consecutive_low_novelty",
+    "recommended": true,
+    "warnings": [
+      "low_claim_volume_recent_rounds"
+    ]
+  }
 }
