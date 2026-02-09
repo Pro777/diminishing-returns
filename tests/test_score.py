@@ -116,6 +116,5 @@ class CliScoreTests(unittest.TestCase):
         self.assertIn("error:", proc.stderr)
         self.assertIn("bad.json:1", proc.stderr)
 
-
 if __name__ == "__main__":
     unittest.main()

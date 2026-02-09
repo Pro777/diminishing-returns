@@ -19,7 +19,7 @@ def main() -> None:
         try:
             data = load_transcript(args.path)
         except (FileNotFoundError, ValueError) as exc:
-            print(f"error: {exc}", file=sys.stderr)
+            print(f"error: {args.path}: {exc}", file=sys.stderr)
             raise SystemExit(2)
 
         try:
