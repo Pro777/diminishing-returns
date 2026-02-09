@@ -13,7 +13,7 @@ It tries to answer:
 
 **Why:** in real loops (research, critique→revise, debate), novelty typically decays: early rounds add many new claims; later rounds add fewer.
 
-**v0.1 implementation:** exact-string set difference over structured `claims`.
+**v0.1 implementation:** normalized-string set difference over structured `claims`, with per-round dedupe.
 
 **v0.2 upgrades:**
 - semantic dedupe (embedding clustering)
@@ -52,6 +52,8 @@ Stop when all are true for **k rounds**:
 - action readiness is high (or at least not blocked)
 
 Then: **ship a decision + run verification**.
+
+**Current default:** recommend stop at `k=2` consecutive low-novelty rounds, and suppress stop if the latest round still has unresolved `open_questions`.
 
 ## Non-goals
 

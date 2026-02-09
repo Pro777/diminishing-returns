@@ -28,7 +28,7 @@ This is **not “confidence.”** It’s a stop/ship signal: *are we still produ
 
 ## 📏 What it measures (v0.1)
 
-A weighted score from observable transcript signals:
+A weighted score plus a stop recommendation from observable transcript signals:
 
 - 🧠 **Semantic convergence**: are two agents saying the same thing?
 - ✨ **Novelty rate**: are we still generating net-new claims?
@@ -66,20 +66,31 @@ dr score trace.jsonl
 
 ```json
 {
-  "score": 0.92,
+  "score": 1.0,
   "components": {
     "semantic_similarity": null,
-    "novelty_rate": 0.10,
+    "novelty_rate": 0.0,
     "structural_agreement": null,
-    "action_readiness": null
+    "action_readiness": 1.0
   },
   "novelty_by_round": [
-    {"round": 1, "claims": 8, "new_claims": 8},
-    {"round": 2, "claims": 6, "new_claims": 3},
-    {"round": 3, "claims": 5, "new_claims": 2},
-    {"round": 4, "claims": 4, "new_claims": 1}
+    {"round": 1, "claims": 4, "new_claims": 4},
+    {"round": 2, "claims": 3, "new_claims": 1},
+    {"round": 3, "claims": 3, "new_claims": 1},
+    {"round": 4, "claims": 3, "new_claims": 1},
+    {"round": 5, "claims": 1, "new_claims": 0},
+    {"round": 6, "claims": 2, "new_claims": 0}
   ],
-  "hint": "Mostly converged; move to implementation and verification."
+  "stop_recommendation": {
+    "recommended": true,
+    "reason": "k_consecutive_low_novelty",
+    "k_required": 2,
+    "max_consecutive_low_novelty_rounds": 2,
+    "blockers": [],
+    "warnings": ["low_claim_volume_recent_rounds"],
+    "confidence": 0.75
+  },
+  "hint": "Diminishing returns detected for consecutive rounds; move to implementation and verification."
 }
 ```
 

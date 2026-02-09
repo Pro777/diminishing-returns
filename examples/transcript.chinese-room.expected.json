@@ -1,11 +1,11 @@
 {
   "components": {
-    "action_readiness": null,
-    "novelty_rate": 0.0,
+    "action_readiness": 1.0,
+    "novelty_rate": 0.25,
     "semantic_similarity": null,
     "structural_agreement": null
   },
-  "hint": "Mostly converged; move to implementation and verification.",
+  "hint": "Still generating novel ideas; continue another round.",
   "novelty_by_round": [
     {
       "claims": 4,
@@ -33,5 +33,14 @@
       "round": 5
     }
   ],
-  "score": 1.0
+  "score": 0.75,
+  "stop_recommendation": {
+    "blockers": [],
+    "confidence": 0.4375,
+    "k_required": 2,
+    "max_consecutive_low_novelty_rounds": 1,
+    "reason": "continue_or_clarify",
+    "recommended": false,
+    "warnings": []
+  }
 }
