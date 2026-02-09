@@ -5,7 +5,9 @@ import string
 from typing import Any, Dict, Iterable
 
 # Spec reference: docs/novelty-and-readiness-spec.md
-JACCARD_THRESHOLD = 0.6
+# L1 paraphrase-ish matching threshold.
+# In live-fire runs, 0.6 was too strict and let near-rephrases count as “novel”.
+JACCARD_THRESHOLD = 0.5
 LOW_NOVELTY_THRESHOLD = 0.15
 HIGH_NOVELTY_THRESHOLD = 0.5
 K_LOW_NOVELTY_REQUIRED = 2
