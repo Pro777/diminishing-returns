@@ -22,6 +22,12 @@
 
 A small utility for measuring **diminishing returns** in multi-agent / multi-LLM conversations.
 
+## Start here
+- `docs/rubric.md` — what DR measures (and why)
+- `docs/roadmap.md` — near-term roadmap (scoring → protocol → trust tiers)
+- `examples/` — small clean-room transcripts to understand the output
+- `docs/research/` — deeper research packets (optional)
+
 This is **not "confidence."** It's a stop/ship signal: *are we still producing novel, decision-relevant information?*
 
 ---
