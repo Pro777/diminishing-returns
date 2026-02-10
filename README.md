@@ -25,9 +25,10 @@ A small utility for measuring **diminishing returns** in multi-agent / multi-LLM
 ## Start here
 - `docs/rubric.md` — what DR measures (and why)
 - `docs/roadmap.md` — near-term roadmap (scoring → protocol → trust tiers)
+- `docs/research/diminishing-returns-academic-research-2026-02-10.md` — deep research packet (start here if you want the academic backbone)
 - `docs/README.md` — docs index
 - `examples/` — small clean-room transcripts to understand the output
-- `docs/research/` — deeper research packets (optional)
+- `docs/research/` — research index (more packets)
 
 This is **not "confidence."** It's a stop/ship signal: *are we still producing novel, decision-relevant information?*
 
