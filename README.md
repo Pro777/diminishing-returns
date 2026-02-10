@@ -25,6 +25,7 @@ A small utility for measuring **diminishing returns** in multi-agent / multi-LLM
 ## Start here
 - `docs/rubric.md` — what DR measures (and why)
 - `docs/roadmap.md` — near-term roadmap (scoring → protocol → trust tiers)
+- `docs/README.md` — docs index
 - `examples/` — small clean-room transcripts to understand the output
 - `docs/research/` — deeper research packets (optional)
 
