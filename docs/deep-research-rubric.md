@@ -65,4 +65,4 @@ Use the normal DR notation, but interpret “rounds” as research passes:
 
 ## Storage
 - Working notes: `out/research/`
-- Promoted canonical guidance: `docs/`
+- Promoted canonical guidance: [docs/](./)
