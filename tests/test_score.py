@@ -178,5 +178,32 @@ class CliScoreTests(unittest.TestCase):
         self.assertIn("bad.json:1", proc.stderr)
 
 
+class CliStopTests(unittest.TestCase):
+    def test_cli_stop_prints_minimal_stop_ship_format(self) -> None:
+        env = dict(os.environ)
+        env["PYTHONPATH"] = "src"
+        proc = subprocess.run(
+            [sys.executable, "-c", "from dr.cli import main; main()", "stop", "examples/transcript.meeting-stop.json"],
+            cwd=ROOT,
+            env=env,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(proc.returncode, 0)
+        self.assertEqual(proc.stderr, "")
+
+        lines = proc.stdout.strip().splitlines()
+        self.assertGreaterEqual(len(lines), 7)
+        self.assertRegex(lines[0], r"^Signal: (CONTINUE|SHIP|ESCALATE)$")
+        self.assertEqual(lines[1], "Why:")
+        self.assertTrue(lines[2].startswith("- "))
+        self.assertTrue(lines[3].startswith("- "))
+        self.assertTrue(lines[4].startswith("- "))
+        self.assertEqual(lines[5], "Next action:")
+        self.assertTrue(lines[6].startswith("- "))
+
+
 if __name__ == "__main__":
     unittest.main()
