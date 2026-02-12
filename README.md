@@ -25,6 +25,7 @@ A small utility for measuring **diminishing returns** in multi-agent / multi-LLM
 ## Start here
 
 Docs:
+- [docs/tldr.md](./docs/tldr.md) — **TLDR: plain-English explainer** (start here if you're new)
 - [docs/rubric.md](./docs/rubric.md) — what DR measures (and why)
 - [docs/roadmap.md](./docs/roadmap.md) — near-term roadmap (scoring → protocol → trust tiers)
 - [docs/research/diminishing-returns-academic-research-2026-02-10.md](./docs/research/diminishing-returns-academic-research-2026-02-10.md) — deep research packet (start here if you want the academic backbone)
