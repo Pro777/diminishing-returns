@@ -14,7 +14,7 @@ DR watches a conversation and asks two questions:
 
 1. **Is anyone saying anything new?** (novelty detection) — It compares each round's claims against everything said before. If round 5 is just rephrasing what was said in rounds 2 and 3, that's low novelty.
 
-2. **Are we ready to act?** (action readiness) — Are there clear next steps? Are the open questions resolved? Are there blockers?
+2. **Are we ready to act?** (action readiness) — Are there clear next steps? Have the open questions been resolved? Do any blockers remain?
 
 Then it gives you one of three signals:
 
@@ -28,14 +28,14 @@ Then it gives you one of three signals:
 
 DR doesn't need any AI models to run. It uses two layers of plain text comparison:
 
-- **L0 (exact match):** Normalize the text (lowercase, strip punctuation) and check if the same claim appeared before. Simple deduplication.
+- **L0 (exact match):** Normalize the text (lowercase, trim leading bullets/prefixes and trailing punctuation/whitespace) and check if the same claim appeared before. Simple deduplication.
 - **L1 (fuzzy match):** Break claims into tokens, remove common stopwords, and compare using Jaccard similarity. Catches paraphrases like "we should deploy on Friday" vs. "Friday deployment is recommended."
 
 A planned L2 layer will use embeddings for deeper semantic matching, but the core works without it.
 
 ## How the stop signal works
 
-DR uses a **k-consecutive rule**: if the last k rounds (default: 2) all had low novelty, it's time to stop. Combined with action readiness, this produces the CONTINUE/SHIP/ESCALATE signal.
+DR bases its stop/ship decision primarily on the **most recent round's novelty rate**. It also tracks how many consecutive rounds have had low novelty — that count feeds into reporting and the ESCALATE condition (3+ rounds stuck). Combined with action readiness, this produces the CONTINUE/SHIP/ESCALATE signal.
 
 ## The trust signal angle
 
