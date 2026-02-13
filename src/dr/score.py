@@ -4,6 +4,8 @@ import re
 import string
 from typing import Any, Dict, Iterable
 
+from .semantic import cosine_similarity, embedding_config_from_env, embed_ollama, mean_vector
+
 # Spec reference: docs/novelty-and-readiness-spec.md
 # L1 paraphrase-ish matching threshold.
 # In live-fire runs, 0.6 was too strict and let near-rephrases count as “novel”.
@@ -329,6 +331,11 @@ def score_transcript(transcript: Dict[str, Any]) -> Dict[str, Any]:
     readiness_by_round: list[dict[str, Any]] = []
     per_round_novelty_rates: list[float] = []
 
+    # Optional semantic convergence (embeddings). Best-effort; failures should not break scoring.
+    embedding_config = embedding_config_from_env()
+    semantic_centroids: list[list[float] | None] = []
+    semantic_similarity_by_round: list[float | None] = []
+
     peak_new_l0 = 0
     peak_new_l1 = 0
 
@@ -356,6 +363,23 @@ def score_transcript(transcript: Dict[str, Any]) -> Dict[str, Any]:
             raise ValueError("Each transcript round must contain an array at 'outputs.claims'.")
 
         claims = _normalized_round_claims(raw_claims)
+
+        # Semantic centroid for the round (optional).
+        centroid: list[float] | None = None
+        sim_to_prev: float | None = None
+        if embedding_config and claims:
+            try:
+                embeddings = embed_ollama(embedding_config, claims)
+                centroid = mean_vector(embeddings)
+                prev_centroid = semantic_centroids[-1] if semantic_centroids else None
+                if prev_centroid is not None:
+                    sim_to_prev = cosine_similarity(prev_centroid, centroid)
+            except Exception:
+                centroid = None
+                sim_to_prev = None
+
+        semantic_centroids.append(centroid)
+        semantic_similarity_by_round.append(sim_to_prev)
 
         new_l0_claims = [claim for claim in claims if claim not in seen_claims_l0]
 
@@ -461,10 +485,12 @@ def score_transcript(transcript: Dict[str, Any]) -> Dict[str, Any]:
         if signal == "ESCALATE":
             rationale_parts.append("Blocker override applied: cannot SHIP while blocked.")
 
+    semantic_similarity = semantic_similarity_by_round[-1]
+
     return {
         "score": _round_float(1.0 - novelty_rate),
         "components": {
-            "semantic_similarity": None,
+            "semantic_similarity": _round_float(semantic_similarity) if semantic_similarity is not None else None,
             "novelty_rate": novelty_rate,
             "novelty_rate_L0": _round_float(float(novelty_rate_l0)),
             "novelty_rate_L1": _round_float(float(novelty_rate_l1)),
@@ -478,12 +504,21 @@ def score_transcript(transcript: Dict[str, Any]) -> Dict[str, Any]:
         },
         "novelty_by_round": novelty_by_round,
         "readiness_by_round": readiness_by_round,
+        "semantic_by_round": [
+            {
+                "round": (r.get("round") if isinstance(r, dict) else None),
+                "centroid": None,
+                "similarity_to_prev": _round_float(s) if s is not None else None,
+            }
+            for r, s in zip(transcript.get("rounds") or [], semantic_similarity_by_round)
+        ],
         "stop_recommendation": {
             "signal": signal,
             "novelty_classification": novelty_classification,
             "readiness_classification": readiness_classification,
             "k_consecutive_low_novelty": trailing_low,
-            "rationale": " ".join(rationale_parts),
+            "rationale": " ".join(rationale_parts)
+            + (f" Semantic similarity to previous round: {_round_float(semantic_similarity)}." if semantic_similarity is not None else ""),
         },
         "hint": hint,
     }

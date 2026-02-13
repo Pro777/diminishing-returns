@@ -75,6 +75,7 @@ cd diminishing-returns
 # Recommended (try it without installing anything)
 bin/dr-score-file transcript.json
 bin/dr-score-file trace.jsonl
+bin/dr-stop-ship transcript.json
 
 # Recommended (developer install): use a virtualenv so `dr` is on PATH
 python -m venv .venv
@@ -82,15 +83,15 @@ source .venv/bin/activate
 python -m pip install -e .
 
 dr score transcript.json
-
 dr score trace.jsonl
+dr stop transcript.json
 ```
 
 > **Note:** `pip install diminishing-returns` does not work yet. The package is pre-release (v0.0.0) and has not been published to PyPI. Install from source as shown above.
 
 ## 🧾 Output
 
-`dr score` prints a single JSON object with **exactly six top-level keys**:
+`dr score` prints a single JSON object with these top-level keys:
 
 1. `score`
 2. `components`
@@ -98,6 +99,19 @@ dr score trace.jsonl
 4. `readiness_by_round`
 5. `stop_recommendation`
 6. `hint`
+7. `semantic_by_round`
+
+`dr stop` prints a compact stop/ship verdict for loops:
+
+```text
+Signal: SHIP
+Why:
+- Novelty is LOW (k-consecutive low rounds: 2).
+- Action readiness is HIGH.
+- Classifications: novelty=LOW, readiness=HIGH.
+Next action:
+- Ship the decision and run verification (tests, repro, or evidence checks).
+```
 
 ```json
 {

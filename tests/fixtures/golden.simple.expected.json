@@ -53,6 +53,18 @@
       "blocker_score": 1.0
     }
   ],
+  "semantic_by_round": [
+    {
+      "round": 1,
+      "centroid": null,
+      "similarity_to_prev": null
+    },
+    {
+      "round": 2,
+      "centroid": null,
+      "similarity_to_prev": null
+    }
+  ],
   "stop_recommendation": {
     "signal": "SHIP",
     "novelty_classification": "LOW",

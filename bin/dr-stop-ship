@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Convenience wrapper for local development.
+# Runs the DR stop/ship verdict without requiring an editable install.
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: bin/dr-stop-ship <transcript.json|transcript.jsonl>" >&2
+  exit 2
+fi
+
+export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+exec python3 -m dr.cli stop "$1"
